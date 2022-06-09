@@ -1,0 +1,18 @@
+<div class="arbron-summons-area">
+  <h4>{{localize "ArbronSummoner.SummonsHeader"}}</h4>
+  <ol>
+    {{#each summons}}
+      <li data-index="{{@index}}">
+        <span class="arbron-summons-actor-link">{{{this.link}}}</span>
+        <input type="text" name="flags.arbron-summoner.summons.{{@index}}.name" value="{{this.name}}"
+          title="Display Name">
+        <input type="hidden" name="flags.arbron-summoner.summons.{{@index}}.uuid" value="{{this.uuid}}">
+        <a class="arbron-summons-delete" title="Remove Summons"><i class="fas fa-minus"></i></a>
+      </li>
+    {{else}}
+      <li class="empty">
+        {{localize "ArbronSummoner.SummonsHint"}}
+      </li>
+    {{/each}}
+  </ol>
+</div>

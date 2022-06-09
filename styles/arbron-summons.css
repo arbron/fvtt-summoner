@@ -1,0 +1,40 @@
+.arbron-summons-area h4 {
+  margin: 0;
+  font-weight: bold;
+  line-height: 24px;
+  color: var(--color-border-dark-tertiary);
+}
+
+.arbron-summons-area ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.arbron-summons-area ol li:not(.empty) {
+  display: flex;
+}
+
+.arbron-summons-area ol li.empty {
+  padding-block: 1em;
+  border: 1px dashed var(--color-border-light-2);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.arbron-summons-area .arbron-summons-actor-link {
+  flex: 2;
+  padding-block-start: 4px;
+}
+
+.arbron-summons-area ol li input {
+  flex: 3;
+}
+
+.arbron-summons-area .arbron-summons-delete {
+  width: 18px;
+  flex: 0 0 18px;
+  line-height: 24px;
+  text-align: end;
+  color:  var(--color-border-light-tertiary);
+}

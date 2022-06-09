@@ -1,0 +1,43 @@
+{
+  "id": "arbron-summoner",
+  "name": "arbron-summoner",
+  "title": "Arbron’s Summoning",
+  "description": "",
+  "authors": [
+    {
+      "name": "Jeff ‘Arbron’ Hitchcock",
+      "url": "https://moviemaps.org",
+      "email": "jeff@szed.co",
+      "discord": "arbron#6515",
+      "twitter": "@arbron",
+      "ko-fi": "arbron"
+    }
+  ],
+  "url": "https://github.com/arbron/fvtt-summoner",
+  "manifest": "",
+  "download": "",
+  "readme": "",
+  "changelog": "",
+  "bugs": "",
+  "version": "1.0.0",
+  "minimumCoreVersion": "",
+  "compatibleCoreVersion": "",
+  "manifestPlusVersion": "1.1.0",
+  "system": ["dnd5e"],
+  "esmodules": [
+    "./modules/main.mjs"
+  ],
+  "styles": [
+    "./styles/arbron-summons.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "flags": {
+    "allowBugReporter": true
+  }
+}
