@@ -1,5 +1,8 @@
 {
   "ArbronSummoner.Summoning": "Summoning",
   "ArbronSummoner.SummonsHeader": "Summons",
-  "ArbronSummoner.SummonsHint": "Drop one or more actors here to configure summons"
+  "ArbronSummoner.SummonsHint": "Drop one or more actors here to configure summons",
+
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Choose Summons Type",
+  "ArbronSummoner.AbilityUse.PlaceSummons": "Place Summons"
 }

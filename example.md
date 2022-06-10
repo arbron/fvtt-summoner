@@ -1,3 +1,17 @@
+## Todo
+
+- [x] Set up module
+- [x] Add `summon` type to `DND5E.itemActionType` config object
+- [x] Modify item sheets with `summon` action type to show summon list built from flags
+- [x] Make summons list respond to dropped actors, name changes, and deletions
+- [ ] Display "Summon" button on chat message
+- [ ] Add summon checkbox and dropdown in item consumption message
+- [ ] Summon actor using Warp Gate upon casting or when summon button is clicked
+- [ ] Insert static summoner roll data into summoned creature's roll data
+- [ ] Implement interface for configuring summoned actors
+- [ ] Modify summoned actor's data based on summoning item's roll data
+
+
 ## Summoned Actor Configuration Data
 
 This data is stored within the flags of an actor to be summoned and contains information on how the actor should be modified when summoned. The formulas here use the summoning actor's roll data.

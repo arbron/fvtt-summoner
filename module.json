@@ -20,8 +20,8 @@
   "changelog": "",
   "bugs": "",
   "version": "1.0.0",
-  "minimumCoreVersion": "",
-  "compatibleCoreVersion": "",
+  "minimumCoreVersion": "9.268",
+  "compatibleCoreVersion": "10",
   "manifestPlusVersion": "1.1.0",
   "system": ["dnd5e"],
   "esmodules": [
@@ -35,6 +35,13 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "warpgate",
+      "type": "module",
+      "manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json"
     }
   ],
   "flags": {
