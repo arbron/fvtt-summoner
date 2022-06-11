@@ -4,5 +4,9 @@
   "ArbronSummoner.SummonsHint": "Drop one or more actors here to configure summons",
 
   "ArbronSummoner.AbilityUse.ChooseSummons": "Choose Summons Type",
-  "ArbronSummoner.AbilityUse.PlaceSummons": "Place Summons"
+  "ArbronSummoner.AbilityUse.PlaceSummons": "Place Summons",
+
+  "ArbronSummoner.ChatCard.SummonButton": "Summon",
+
+  "ArbronSummoner.Error.NoWarpGate": "Summoning requires the Warp Gate module be installed and active"
 }

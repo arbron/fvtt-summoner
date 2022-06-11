@@ -4,12 +4,13 @@
 - [x] Add `summon` type to `DND5E.itemActionType` config object
 - [x] Modify item sheets with `summon` action type to show summon list built from flags
 - [x] Make summons list respond to dropped actors, name changes, and deletions
-- [ ] Display "Summon" button on chat message
-- [ ] Add summon checkbox and dropdown in item consumption message
-- [ ] Summon actor using Warp Gate upon casting or when summon button is clicked
+- [x] Display "Summon" button on chat message
+- [x] Add summon checkbox and dropdown in item consumption message
+- [x] Summon actor using Warp Gate upon casting or when summon button is clicked
 - [ ] Insert static summoner roll data into summoned creature's roll data
 - [ ] Implement interface for configuring summoned actors
 - [ ] Modify summoned actor's data based on summoning item's roll data
+- [ ] Add summons type selection UI if no type is selected during roll or modifier key is pressed when summons is clicked
 
 
 ## Summoned Actor Configuration Data
@@ -26,13 +27,10 @@ This data is stored within the flags of an actor to be summoned and contains inf
         "data.attributes.hp.max": "40 + 10 * (@item.level - 4)",
         "data.attributes.hp.value": "40 + 10 * (@item.level - 4)"
       },
-      "items": {
-        "IgJkSnLiLJOWH7eK": {
-          "changes": {},
-          "matchToHit": true
-        }
-      },
+      "items": [],
       "matchProficiency": true,
+      "matchToHit": true,
+      "matchSaveDCs": true,
       "summonerData": {
         "actorUuid": "abcd",
         "itemId": "",

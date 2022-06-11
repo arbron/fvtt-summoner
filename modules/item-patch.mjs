@@ -10,10 +10,7 @@ export class SummonsItem {
    */
   static async summon(item, uuid) {
     // Ensure warpgate is installed and enabled, otherwise throw an error
-    if ( !warpgate ) {
-      console.error("Arbron's Summoner requires the Warp Gate module");
-      return;
-    }
+    if ( !warpgate ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoWarpGate"));
 
     // If UUID is blank, present selection UI for this item
     if ( !uuid ) {
@@ -210,7 +207,7 @@ export class SummonsItem {
     const placeSummons = $(`
       <div class="form-group">
         <label class="checkbox">
-          <input type="checkbox" name="placeSummons" checked>
+          <input type="checkbox" name="createSummons" checked>
           ${game.i18n.localize("ArbronSummoner.AbilityUse.PlaceSummons")}
         </label>
       </div>
@@ -245,15 +242,40 @@ export class SummonsItem {
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
 
   /**
-   * Add a Summon button to chat message.
+   * Add the summons button to chat cards that require it.
+   * @param {Item5e} item              Item for which the chat card is being displayed.
+   * @param {object} chatData          Data used to create the chat message.
+   * @param {ItemRollOptions} options  Options which configure the display of the item chat card.
+   */
+  static preDisplayCard(item, chatData, options) {
+    if ( (item.data.data.actionType !== "summon") ) return;
+    const summons = item.getFlag("arbron-summoner", "summons") ?? [];
+    if ( !summons.length ) return;
+
+    const uuid = foundry.utils.getProperty(chatData.flags, "arbron-summoner.summonsType");
+    const button = $(`
+      <button data-action="summon"${uuid ? ` data-uuid="${uuid}"` : ""}>
+        ${game.i18n.localize("ArbronSummoner.ChatCard.SummonButton")}
+      </button>
+    `)[0];
+    const content = $(chatData.content)[0];
+    const insertTarget = content.querySelector(".card-buttons") ?? content;
+    insertTarget.insertAdjacentElement("beforeend", button);
+    chatData.content = content.outerHTML;
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
+   * Attach event listener to the summons button.
    * @param {ChatMessage} message  The ChatMessage document being rendered.
    * @param {jQuery} html          The pending HTML as a jQuery object.
    * @param {object} data          The input data provided for template rendering.
    */
   static renderChatMessage(message, html, data) {
-    // Check showButton flag to determine if button should be shown
-    // Determine if user has permission to perform this summoning (GM or owner of player)
-    // Add "Summon" button above footer
+    const summonsButton = html[0].querySelector("[data-action='summon']");
+    if ( !summonsButton ) return;
+    summonsButton.addEventListener("click", SummonsItem.onSummonsButtonClicked.bind(message));
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -262,11 +284,30 @@ export class SummonsItem {
    * Handle clicks on the Summons button on a chat message.
    * @param {Event} event  Triggering click event.
    */
-  static onSummonsButtonClicked(event) {
-    // Retrieve summoning item using store dataset
-    // If necessary, create leveled version of spell for generating roll data
-    // Get default summons type from flags
-    // Call summon
+  static async onSummonsButtonClicked(event) {
+    event.preventDefault();
+
+    const button = event.currentTarget;
+    const card = button.closest(".chat-card");
+    const messageId = card.closest(".message").dataset.messageId;
+    const message = game.messages.get(messageId);
+
+    // Recover the actor for the chat card
+    const actor = await game.dnd5e.item.document._getChatCardActor(card);
+    if ( !actor ) return;
+
+    // Get the Item from stored flag data or by the item ID on the Actor
+    const storedData = message.getFlag("dnd5e", "itemData");
+    const item = storedData
+      ? new Item.implementation(storedData, {parent: actor})
+      : actor.items.get(card.dataset.itemId);
+    if ( !item ) return ui.notifications.error(game.i18n.format("DND5E.ActionWarningNoItem", {
+      item: card.dataset.itemId, name: actor.name
+    }));
+    // TODO: Upcast item if it is not stored and has spell level
+
+    const uuid = message.getFlag("arbron-summoner", "summonsType") ?? button.dataset.uuid;
+    SummonsItem.summon(item, uuid);
   }
 
 }
