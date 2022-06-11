@@ -25,7 +25,7 @@
   "manifestPlusVersion": "1.1.0",
   "system": ["dnd5e"],
   "esmodules": [
-    "./modules/main.mjs"
+    "./module/main.mjs"
   ],
   "styles": [
     "./styles/arbron-summons.css"
