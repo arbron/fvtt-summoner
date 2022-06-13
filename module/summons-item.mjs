@@ -43,7 +43,8 @@ export class SummonsItem {
     return warpgate.spawnAt(
       { x: templateData.x, y: templateData.y },
       protoData, updates, undefined,
-      { comparisonKeys: { Item: "_id" } });
+      { comparisonKeys: { Item: "_id" } }
+    );
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -313,6 +314,23 @@ export class SummonsItem {
 
     const uuid = message.getFlag("arbron-summoner", "summonsType") ?? button.dataset.uuid;
     SummonsItem.summon(item, uuid);
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
+   * Add summoner data to an item's getRollData.
+   * @returns {object}  Modified roll data.
+   */
+  static getRollData(wrapped) {
+    const rollData = wrapped();
+    if ( !rollData ) return rollData;
+
+    const summoner = this.actor.getFlag("arbron-summoner", "summoner");
+    if ( !summoner?.data ) return rollData;
+
+    rollData.summoner = summoner.data;
+    return rollData;
   }
 
 }

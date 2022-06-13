@@ -1,3 +1,4 @@
+import { libWrapper } from "./libWrapperShim.mjs";
 import { SummonsActor } from "./summons-actor.mjs";
 import { SummonsItem } from "./summons-item.mjs";
 
@@ -5,6 +6,12 @@ import { SummonsItem } from "./summons-item.mjs";
 Hooks.once("init", function() {
   // Patch DND5E.itemActionTypes to include new summon action
   CONFIG.DND5E.itemActionTypes.summon = "ArbronSummoner.Summoning";
+});
+
+Hooks.once("setup", function() {
+  libWrapper.register(
+    "arbron-summoner", "Item.implementation.prototype.getRollData", SummonsItem.getRollData, "WRAPPER"
+  );
 });
 
 // Actor Hooks

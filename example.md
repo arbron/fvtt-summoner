@@ -7,8 +7,8 @@
 - [x] Display "Summon" button on chat message
 - [x] Add summon checkbox and dropdown in item consumption message
 - [x] Summon actor using Warp Gate upon casting or when summon button is clicked
-- [ ] Store summoning item's roll data in summoned actor's flags
-- [ ] Insert static summoner roll data into summoned creature's roll data
+- [x] Store summoning item's roll data in summoned actor's flags
+- [x] Insert static summoner roll data into summoned creature's roll data
 - [x] Implement interface for configuring summoned actors
 - [ ] Add ability to configure item modifications on summons
 - [x] Modify summoned actor's data based on summoning item's roll data

@@ -136,6 +136,9 @@ export class SummonsActor {
       }
     }
 
+    // Store roll data & summoner information in flags
+    foundry.utils.setProperty(updates.actor, "flags.arbron-summoner.summoner", { uuid: item.uuid, data: rollData });
+
     return updates;
   }
 
