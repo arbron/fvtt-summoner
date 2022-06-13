@@ -7,8 +7,10 @@
 - [x] Display "Summon" button on chat message
 - [x] Add summon checkbox and dropdown in item consumption message
 - [x] Summon actor using Warp Gate upon casting or when summon button is clicked
+- [ ] Store summoning item's roll data in summoned actor's flags
 - [ ] Insert static summoner roll data into summoned creature's roll data
-- [ ] Implement interface for configuring summoned actors
+- [x] Implement interface for configuring summoned actors
+- [ ] Add ability to configure item modifications on summons
 - [ ] Modify summoned actor's data based on summoning item's roll data
 - [ ] Add summons type selection UI if no type is selected during roll or modifier key is pressed when summons is clicked
 
@@ -22,15 +24,17 @@ This data is stored within the flags of an actor to be summoned and contains inf
   "flags": {
     "arbron-summoner": {
       "version": 1,
-      "changes": {
-        "data.attributes.ac.flat": "11 + @item.level",
-        "data.attributes.hp.max": "40 + 10 * (@item.level - 4)",
-        "data.attributes.hp.value": "40 + 10 * (@item.level - 4)"
+      "config": {
+        "actorChanges": [
+          { "key": "data.attributes.ac.flat", "value": "11 + @item.level" },
+          { "key": "data.attributes.hp.max", "value": "40 + 10 * (@item.level - 4)" },
+          { "key": "data.attributes.hp.value", "value": "40 + 10 * (@item.level - 4)" }
+        ],
+        "items": [],
+        "matchProficiency": true,
+        "matchToHit": true,
+        "matchSaveDCs": true
       },
-      "items": [],
-      "matchProficiency": true,
-      "matchToHit": true,
-      "matchSaveDCs": true,
       "summonerData": {
         "actorUuid": "abcd",
         "itemId": "",

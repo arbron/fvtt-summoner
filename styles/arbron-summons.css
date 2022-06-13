@@ -38,3 +38,29 @@
   text-align: end;
   color:  var(--color-border-light-tertiary);
 }
+
+.arbron-summons-flags-area .config-button {
+  flex: 0 0 20px;
+}
+
+.arbron-summons-config header {
+  height: 28px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border-light-tertiary);
+  padding: 3px 1px;
+  font-weight: bold;
+  font-size: var(--font-size-14);
+}
+.arbron-summons-config header .key { padding-inline-start: 4px; }
+.arbron-summons-config header .value { padding-inline: 2px; }
+
+.arbron-summons-config ol { padding: 0; }
+.arbron-summons-config ol input[type="text"] { height: var(--form-field-height); }
+.arbron-summons-config li { align-items: center; }
+.arbron-summons-config .key { flex: 2; }
+.arbron-summons-config .value { flex: 2; }
+.arbron-summons-config .controls {
+  flex: 0 0 24px;
+  text-align: center;
+}

@@ -1,4 +1,5 @@
-import { SummonsItem } from "./item-patch.mjs";
+import { SummonsActor } from "./summons-actor.mjs";
+import { SummonsItem } from "./summons-item.mjs";
 
 
 Hooks.once("init", function() {
@@ -6,8 +7,16 @@ Hooks.once("init", function() {
   CONFIG.DND5E.itemActionTypes.summon = "ArbronSummoner.Summoning";
 });
 
+// Actor Hooks
+Hooks.on("renderActorSheet5eNPC", SummonsActor.renderActorSheet);
+Hooks.on("renderActorSheet5eVehicle", SummonsActor.renderActorSheet);
+Hooks.on("renderActorSheetFlags", SummonsActor.renderActorSheetFlags);
+
+// Item Configuration Hooks
 Hooks.on("renderItemSheet5e", SummonsItem.renderItemSheet);
 Hooks.on("preUpdateItem", SummonsItem.preUpdateItem);
+
+// Item Rolling & Chat Message Hooks
 Hooks.on("dnd5e.preRoll", SummonsItem.preRoll);
 Hooks.on("dnd5e.roll", SummonsItem.roll);
 Hooks.on("dnd5e.preDisplayCard", SummonsItem.preDisplayCard);

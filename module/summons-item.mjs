@@ -270,9 +270,9 @@ export class SummonsItem {
    * Attach event listener to the summons button.
    * @param {ChatMessage} message  The ChatMessage document being rendered.
    * @param {jQuery} html          The pending HTML as a jQuery object.
-   * @param {object} data          The input data provided for template rendering.
+   * @param {object} context       The input data provided for template rendering.
    */
-  static renderChatMessage(message, html, data) {
+  static renderChatMessage(message, html, context) {
     const summonsButton = html[0].querySelector("[data-action='summon']");
     if ( !summonsButton ) return;
     summonsButton.addEventListener("click", SummonsItem.onSummonsButtonClicked.bind(message));

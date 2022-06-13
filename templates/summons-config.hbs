@@ -1,0 +1,57 @@
+<form autocomplete="off">
+  <section class="form-body">
+
+    <h3 class="form-header">Automatic Matching</h3>
+    <div class="form-group">
+      <label>Match Proficiency</label>
+      <input type="checkbox" name="matchProficiency" {{checked matchProficiency}}>
+    </div>
+    <div class="form-group">
+      <label>Match To Hit</label>
+      <input type="checkbox" name="matchToHit" {{checked matchToHit}}>
+    </div>
+    <div class="form-group">
+      <label>Match Save DCs</label>
+      <input type="checkbox" name="matchSaveDCs" {{checked matchSaveDCs}}>
+    </div>
+
+    <h3 class="form-header">Actor Changes</h3>
+    <header class="flexrow">
+      <div class="key">Attribute Key</div>
+      <div class="value">Change Value</div>
+      <div class="controls">
+        <a data-action="add-actor-change"><i class="far fa-plus-square"></i></a>
+      </div>
+    </header>
+    <ol class="actor-changes-list">
+      {{#each actorChanges}}
+        <li class="effect-change flexrow">
+          <div class="key">
+            <input type="text" name="actorChanges.{{@index}}.key" value="{{this.key}}">
+          </div>
+          <div class="value">
+            <input type="text" name="actorChanges.{{@index}}.value" value="{{this.value}}">
+          </div>
+          <div class="controls">
+            <a data-action="delete-actor-change" data-index="{{@index}}" title="Remove Change">
+              <i class="fas fa-trash"></i>
+            </a>
+          </div>
+        </li>
+      {{/each}}
+    </ol>
+    <!-- List of Actor Changes -->
+
+    <!-- <h3 class="form-header">Item Changes</h3>
+    List of Item Changes (for later) -->
+
+  </section>
+  <footer class="form-footer flexrow">
+    <button type="submit" name="submit">
+      <i class="far fa-save"></i> Update Configuration
+    </button>
+    <button type="button" name="reset">
+      <i class="fas fa-undo"></i> Reset to Defaults
+    </button>
+  </footer>
+</form>
