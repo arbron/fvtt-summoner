@@ -64,4 +64,100 @@ export class SummonsActor {
     (new SummonsConfig(this.object)).render(true);
   }
 
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+  
+  /**
+   * Get an updates for the changes needed when summoning.
+   * @param {Item5e} item  The item performing the summoning.
+   */
+  static getChanges(item) {
+    const config = this.getFlag("arbron-summoner", "config");
+    if ( !config ) return updates;
+    const updates = { actor: {}, embedded: {} };
+    const rollData = item.getRollData();
+    const toHitTarget = config.matchToHit ? SummonsActor._determineToHit(item) : 0;
+
+    // Modify proficiency to match summoner using an active effect
+    if ( config.matchProficiency ) {
+      const proficiencyEffect = new ActiveEffect({
+        changes: [{
+          key: "data.attributes.prof",
+          mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
+          value: rollData.attributes.prof
+        }],
+        disabled: false,
+        icon: "icons/skills/targeting/crosshair-bars-yellow.webp",
+        label: game.i18n.localize("DND5E.Proficiency")
+      }, { parent: this });
+      updates.embedded.ActiveEffect = { [proficiencyEffect.data.label]: proficiencyEffect.toObject() };
+      this.data.update({ effects: [proficiencyEffect.toObject()] });
+      this.prepareData();
+    }
+
+    // Apply AC formula
+    const ac = game.dnd5e.utils.simplifyBonus(config.acFormula, rollData)
+    if ( ac ) updates.actor["data.attributes.ac.flat"] = ac;
+
+    // Apply HP formula
+    const hp = game.dnd5e.utils.simplifyBonus(config.hpFormula, rollData);
+    if ( hp ) {
+      updates.actor["data.attributes.hp.max"] = hp;
+      updates.actor["data.attributes.hp.value"] = hp;
+    }
+
+    // Apply other actor data changes
+    for ( const change of config.actorChanges ?? [] ) {
+      const value = game.dnd5e.utils.simplifyBonus(change.value, rollData);
+      this.data.update({ [change.key]: value });
+      updates.actor[change.key] = value;
+    }
+    this.prepareData();
+
+    // Perform item changes
+    for ( const item of this.items ) {
+      const itemUpdates = {};
+
+      // Match item to hit to match summoner
+      if ( config.matchToHit && item.hasAttack ) {
+        const toHit = SummonsActor._determineToHit(item);
+        itemUpdates["data.attackBonus"] = toHitTarget - toHit;
+      }
+
+      // Match item save DC to match summoner
+      if ( config.matchSaveDCs && item.hasSave ) {
+        itemUpdates["data.save.dc"] = rollData.item.save.dc ?? rollData.attributes.spelldc;
+        itemUpdates["data.save.scaling"] = "flat";
+      }
+
+      if ( !foundry.utils.isObjectEmpty(itemUpdates) ) {
+        itemUpdates._id = item.id;
+        updates.embedded.Item ??= {};
+        updates.embedded.Item[item.id] = foundry.utils.expandObject(itemUpdates);
+      }
+    }
+
+    return updates;
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
+   * Determine the final to hit bonus for an item or a close approximation.
+   * @param {Item5e} item  Item for which the to hit should be determined.
+   * @returns {number}     Final to hit as single number.
+   */
+  static _determineToHit(item) {
+    const data = item.getAttackToHit();
+    if ( data ) {
+      const roll = new Roll(data.parts.join("+"), data.rollData);
+      if ( roll.isDeterministic ) {
+        roll.evaluate({ async: false });
+        return roll.total;
+      }
+    }
+    const ability = item.actor.data.data.attributes.spellcasting ?? item.abilityMod;
+    const abilityMod = foundry.utils.getProperty(item.actor.data, `data.abilities.${ability}.mod`) ?? 0;
+    return item.actor.data.data.attributes.prof + abilityMod;
+  }
+
 }

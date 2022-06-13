@@ -45,7 +45,7 @@ export class SummonsConfig extends FormApplication {
   /** @inheritdoc */
   async _updateObject(event, formData) {
     this._retainChanges();
-    this.object.setFlag("arbron-summoner", "config", formData);
+    this.object.setFlag("arbron-summoner", "config", this.config);
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */

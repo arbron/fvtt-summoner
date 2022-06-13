@@ -11,8 +11,10 @@
 - [ ] Insert static summoner roll data into summoned creature's roll data
 - [x] Implement interface for configuring summoned actors
 - [ ] Add ability to configure item modifications on summons
-- [ ] Modify summoned actor's data based on summoning item's roll data
+- [x] Modify summoned actor's data based on summoning item's roll data
 - [ ] Add summons type selection UI if no type is selected during roll or modifier key is pressed when summons is clicked
+- [ ] Ensure everything is properly localizable
+- [x] Add easy AC & HP change formula fields
 
 
 ## Summoned Actor Configuration Data
@@ -23,17 +25,15 @@ This data is stored within the flags of an actor to be summoned and contains inf
 {
   "flags": {
     "arbron-summoner": {
-      "version": 1,
       "config": {
-        "actorChanges": [
-          { "key": "data.attributes.ac.flat", "value": "11 + @item.level" },
-          { "key": "data.attributes.hp.max", "value": "40 + 10 * (@item.level - 4)" },
-          { "key": "data.attributes.hp.value", "value": "40 + 10 * (@item.level - 4)" }
-        ],
-        "items": [],
+        "version": 1,
         "matchProficiency": true,
         "matchToHit": true,
-        "matchSaveDCs": true
+        "matchSaveDCs": true,
+        "acFormula": "11 + @item.level",
+        "hpFormula": "40 + 10 * (@item.level - 4)",
+        "actorChanges": [],
+        "itemChanges": []
       },
       "summonerData": {
         "actorUuid": "abcd",

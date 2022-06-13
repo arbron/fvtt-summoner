@@ -8,5 +8,6 @@
 
   "ArbronSummoner.ChatCard.SummonButton": "Summon",
 
+  "ArbronSummoner.Error.NoActor": "Original actor could not be found to summon.",
   "ArbronSummoner.Error.NoWarpGate": "Summoning requires the Warp Gate module be installed and active"
 }

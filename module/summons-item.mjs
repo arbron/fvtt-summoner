@@ -1,4 +1,5 @@
 import { debugLog } from "./logging.mjs";
+import { SummonsActor } from "./summons-actor.mjs";
 
 
 export class SummonsItem {
@@ -9,7 +10,7 @@ export class SummonsItem {
    * @param {string} [uuid]  UUID of the actor to summon. If blank, then the type selection UI will be shown.
    */
   static async summon(item, uuid) {
-    // Ensure warpgate is installed and enabled, otherwise throw an error
+    // Ensure Warp Gate is installed and enabled, otherwise throw an error
     if ( !warpgate ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoWarpGate"));
 
     // If UUID is blank, present selection UI for this item
@@ -18,13 +19,13 @@ export class SummonsItem {
       return;
     }
 
-    // Retrieve actor and token data
+    // Get copy of roll data & retrieve actor clone
     const actor = await fromUuid(uuid);
-    const protoData = await actor?.getTokenData();
-    if ( !protoData ) return debugLog("Failed to fetch actor data for summoning", uuid);
+    if ( !actor ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoActor"));
+    const protoData = await actor.getTokenData();
 
     // Prepare actor data changes
-    const updates = {};
+    const updates = SummonsActor.getChanges.bind(actor)(item);
 
     // Figure out where to place the summons
     item.parent?.sheet.minimize();
@@ -36,9 +37,13 @@ export class SummonsItem {
     // Ensure the template was completed and merge in any rotation changes
     await warpgate.event.notify(warpgate.EVENT.PLACEMENT, {templateData, tokenData: protoData.toObject()});
     if ( templateData.cancelled ) return;
-    foundry.utils.mergeObject(updates, { "token.rotation": templateData.direction });
+    updates.token = { rotation: templateData.direction };
 
-    return warpgate.spawnAt({ x: templateData.x, y: templateData.y }, protoData, updates);
+    console.log(updates);
+    return warpgate.spawnAt(
+      { x: templateData.x, y: templateData.y },
+      protoData, updates, undefined,
+      { comparisonKeys: { Item: "_id" } });
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
