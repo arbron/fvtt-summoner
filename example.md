@@ -15,6 +15,8 @@
 - [ ] Add summons type selection UI if no type is selected during roll or modifier key is pressed when summons is clicked
 - [ ] Ensure everything is properly localizable
 - [x] Add easy AC & HP change formula fields
+- [ ] Fix bug caused by using ability templates & summons at the same time
+- [ ] Add ability to summon more than one creature, specified in summons list
 
 
 ## Summoned Actor Configuration Data

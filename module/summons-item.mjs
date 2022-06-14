@@ -39,7 +39,6 @@ export class SummonsItem {
     if ( templateData.cancelled ) return;
     updates.token = { rotation: templateData.direction };
 
-    console.log(updates);
     return warpgate.spawnAt(
       { x: templateData.x, y: templateData.y },
       protoData, updates, undefined,
@@ -304,13 +303,18 @@ export class SummonsItem {
 
     // Get the Item from stored flag data or by the item ID on the Actor
     const storedData = message.getFlag("dnd5e", "itemData");
-    const item = storedData
+    let item = storedData
       ? new Item.implementation(storedData, {parent: actor})
       : actor.items.get(card.dataset.itemId);
     if ( !item ) return ui.notifications.error(game.i18n.format("DND5E.ActionWarningNoItem", {
       item: card.dataset.itemId, name: actor.name
     }));
-    // TODO: Upcast item if it is not stored and has spell level
+
+    // If not using stored data & upcast, prepare upcast item
+    const upcastLevel = Number(card.dataset.spellLevel);
+    if ( !storedData && !Number.isNaN(upcastLevel) && upcastLevel !== item.data.data.level ) {
+      item = item.clone({"data.level": upcastLevel}, {keepId: true});
+    }
 
     const uuid = message.getFlag("arbron-summoner", "summonsType") ?? button.dataset.uuid;
     SummonsItem.summon(item, uuid);

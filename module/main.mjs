@@ -10,7 +10,7 @@ Hooks.once("init", function() {
 
 Hooks.once("setup", function() {
   libWrapper.register(
-    "arbron-summoner", "Item.implementation.prototype.getRollData", SummonsItem.getRollData, "WRAPPER"
+    "arbron-summoner", "Item.implementation.prototype.getRollData", SummonsItem.getRollData, libWrapper.WRAPPER
   );
 });
 
