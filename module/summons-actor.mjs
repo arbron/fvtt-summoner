@@ -89,26 +89,26 @@ export class SummonsActor {
         icon: "icons/skills/targeting/crosshair-bars-yellow.webp",
         label: game.i18n.localize("DND5E.Proficiency")
       }, { parent: this });
-      updates.embedded.ActiveEffect = { [proficiencyEffect.data.label]: proficiencyEffect.toObject() };
-      this.data.update({ effects: [proficiencyEffect.toObject()] });
+      updates.embedded.ActiveEffect = { [proficiencyEffect.label]: proficiencyEffect.toObject() };
+      this.updateSource({ effects: [proficiencyEffect.toObject()] });
       this.prepareData();
     }
 
     // Apply AC formula
     const ac = game.dnd5e.utils.simplifyBonus(config.acFormula, rollData)
-    if ( ac ) updates.actor["data.attributes.ac.flat"] = ac;
+    if ( ac ) updates.actor["system.attributes.ac.flat"] = ac;
 
     // Apply HP formula
     const hp = game.dnd5e.utils.simplifyBonus(config.hpFormula, rollData);
     if ( hp ) {
-      updates.actor["data.attributes.hp.max"] = hp;
-      updates.actor["data.attributes.hp.value"] = hp;
+      updates.actor["system.attributes.hp.max"] = hp;
+      updates.actor["system.attributes.hp.value"] = hp;
     }
 
     // Apply other actor data changes
     for ( const change of config.actorChanges ?? [] ) {
-      const value = game.dnd5e.utils.simplifyBonus(change.value, rollData);
-      this.data.update({ [change.key]: value });
+      const value = dnd5e.utils.simplifyBonus(change.value, rollData);
+      this.updateSource({ [change.key]: value });
       updates.actor[change.key] = value;
     }
     this.prepareData();
@@ -120,16 +120,16 @@ export class SummonsActor {
       // Match item to hit to match summoner
       if ( config.matchToHit && item.hasAttack ) {
         const toHit = SummonsActor._determineToHit(item);
-        itemUpdates["data.attackBonus"] = toHitTarget - toHit;
+        itemUpdates["system.attackBonus"] = toHitTarget - toHit;
       }
 
       // Match item save DC to match summoner
       if ( config.matchSaveDCs && item.hasSave ) {
-        itemUpdates["data.save.dc"] = rollData.item.save.dc ?? rollData.attributes.spelldc;
-        itemUpdates["data.save.scaling"] = "flat";
+        itemUpdates["system.save.dc"] = rollData.item.save.dc ?? rollData.attributes.spelldc;
+        itemUpdates["system.save.scaling"] = "flat";
       }
 
-      if ( !foundry.utils.isObjectEmpty(itemUpdates) ) {
+      if ( !foundry.utils.isEmpty(itemUpdates) ) {
         itemUpdates._id = item.id;
         updates.embedded.Item ??= {};
         updates.embedded.Item[item.id] = foundry.utils.expandObject(itemUpdates);
@@ -158,9 +158,9 @@ export class SummonsActor {
         return roll.total;
       }
     }
-    const ability = item.actor.data.data.attributes.spellcasting ?? item.abilityMod;
-    const abilityMod = foundry.utils.getProperty(item.actor.data, `data.abilities.${ability}.mod`) ?? 0;
-    return item.actor.data.data.attributes.prof + abilityMod;
+    const ability = item.actor.system.attributes.spellcasting ?? item.abilityMod;
+    const abilityMod = foundry.utils.getProperty(item.actor, `system.abilities.${ability}.mod`) ?? 0;
+    return item.actor.system.attributes.prof + abilityMod;
   }
 
 }

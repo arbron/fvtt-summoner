@@ -11,7 +11,7 @@ export class SummonsItem {
    */
   static async summon(item, uuid) {
     // Ensure Warp Gate is installed and enabled, otherwise throw an error
-    if ( !warpgate ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoWarpGate"));
+    if ( !globalThis.warpgate ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoWarpGate"));
 
     // If UUID is blank, present selection UI for this item
     if ( !uuid ) {
@@ -30,7 +30,7 @@ export class SummonsItem {
     // Figure out where to place the summons
     item.parent?.sheet.minimize();
     const templateData = await warpgate.crosshairs.show({
-      size: protoData.width, icon: protoData.img, name: protoData.name
+      size: protoData.width, icon: protoData.texture.src, name: protoData.name
     });
     item.parent?.sheet.maximize();
 
@@ -55,7 +55,7 @@ export class SummonsItem {
    */
   static async renderItemSheet(sheet, html, data) {
     const item = sheet.item;
-    if ( item.data.data.actionType !== "summon" ) return;
+    if ( item.system.actionType !== "summon" ) return;
 
     // Render summons section
     debugLog("Rendering debug section");
@@ -63,7 +63,7 @@ export class SummonsItem {
     const rendered = $(await renderTemplate("modules/arbron-summoner/templates/summons-section.hbs", summonsData))[0];
 
     // Insert summons section before chat flavor
-    const insertPoint = html[0].querySelector("input[name='data.chatFlavor']").closest("div.form-group");
+    const insertPoint = html[0].querySelector("input[name='system.chatFlavor']").closest("div.form-group");
     if ( !insertPoint ) return debugLog("Failed to insert summons template into item");
     insertPoint.insertAdjacentElement("beforebegin", rendered);
 
@@ -170,7 +170,7 @@ export class SummonsItem {
    * @param {object} options                Additional roll options.
    */
   static preRoll(item, config, options) {
-    if ( item.data.data.actionType !== "summon" ) return;
+    if ( item.system.actionType !== "summon" ) return;
     const summons = item.getFlag("arbron-summoner", "summons") ?? [];
     if ( !summons.length ) return;
     config.needsConfiguration = true;
@@ -188,7 +188,7 @@ export class SummonsItem {
    */
   static renderAbilityUseDialog(dialog, html, data) {
     const item = dialog.item;
-    if ( item.data.data.actionType !== "summon" ) return;
+    if ( item.system.actionType !== "summon" ) return;
     const summons = item.getFlag("arbron-summoner", "summons") ?? [];
     if ( !summons.length ) return;
 
@@ -204,7 +204,7 @@ export class SummonsItem {
     `)[0];
 
     // Insert summons dropdown beneath "Cast at Level" if available, otherwise beneath "Notes"
-    const castAtLevel = html[0].querySelector("select[name='level']")?.closest("div.form-group");
+    const castAtLevel = html[0].querySelector("select[name='consumeSpellLevel']")?.closest("div.form-group");
     const insertTarget = castAtLevel ?? html[0].querySelector(".notes");
     insertTarget.insertAdjacentElement("afterend", selectSummons);
 
@@ -232,7 +232,7 @@ export class SummonsItem {
    * @param {ItemRollOptions} options       Additional options used for configuring item rolls.
    */
   static roll(item, config, options) {
-    if ( (item.data.data.actionType !== "summon") ) return;
+    if ( (item.system.actionType !== "summon") ) return;
     const summons = item.getFlag("arbron-summoner", "summons") ?? [];
     if ( !summons.length ) return;
 
@@ -253,7 +253,7 @@ export class SummonsItem {
    * @param {ItemRollOptions} options  Options which configure the display of the item chat card.
    */
   static preDisplayCard(item, chatData, options) {
-    if ( (item.data.data.actionType !== "summon") ) return;
+    if ( (item.system.actionType !== "summon") ) return;
     const summons = item.getFlag("arbron-summoner", "summons") ?? [];
     if ( !summons.length ) return;
 
@@ -298,7 +298,7 @@ export class SummonsItem {
     const message = game.messages.get(messageId);
 
     // Recover the actor for the chat card
-    const actor = await game.dnd5e.item.document._getChatCardActor(card);
+    const actor = await dnd5e.documents.Item5e._getChatCardActor(card);
     if ( !actor ) return;
 
     // Get the Item from stored flag data or by the item ID on the Actor
@@ -313,7 +313,8 @@ export class SummonsItem {
     // If not using stored data & upcast, prepare upcast item
     const upcastLevel = Number(card.dataset.spellLevel);
     if ( !storedData && !Number.isNaN(upcastLevel) && upcastLevel !== item.data.data.level ) {
-      item = item.clone({"data.level": upcastLevel}, {keepId: true});
+      item = item.clone({"system.level": upcastLevel}, {keepId: true});
+      item.prepareData();
     }
 
     const uuid = message.getFlag("arbron-summoner", "summonsType") ?? button.dataset.uuid;

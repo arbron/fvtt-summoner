@@ -1,6 +1,5 @@
 {
   "id": "arbron-summoner",
-  "name": "arbron-summoner",
   "title": "Arbron’s Summoning",
   "description": "",
   "authors": [
@@ -20,10 +19,32 @@
   "changelog": "",
   "bugs": "",
   "version": "1.0.0",
-  "minimumCoreVersion": "9.268",
-  "compatibleCoreVersion": "10",
-  "manifestPlusVersion": "1.1.0",
-  "system": ["dnd5e"],
+  "compatibility": {
+    "minimum": "10.274",
+    "verified": "10"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/v10-dev/system.json",
+        "compatibility": {
+          "minimum": "2.0.0",
+          "verified": "2.0"
+        }
+      }
+    ],
+    "requires": [
+      {
+        "id": "warpgate",
+        "type": "module",
+        "manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
+        "compatibility": {
+          "verified": "1.13"
+        }
+      }
+    ]
+  },
   "esmodules": [
     "./module/main.mjs"
   ],
@@ -37,13 +58,7 @@
       "path": "lang/en.json"
     }
   ],
-  "dependencies": [
-    {
-      "name": "warpgate",
-      "type": "module",
-      "manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json"
-    }
-  ],
+  "manifestPlusVersion": "1.1.0",
   "flags": {
     "allowBugReporter": true
   }
