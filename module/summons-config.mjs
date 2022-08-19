@@ -1,7 +1,7 @@
 /**
  * Application for configuring changes made to an actor when it is summoned.
  */
-export class SummonsConfig extends FormApplication {
+export class SummonsConfig extends DocumentSheet {
 
   constructor(object, options) {
     super(object, options);
@@ -21,8 +21,15 @@ export class SummonsConfig extends FormApplication {
       classes: ["dnd5e", "arbron-summons-config"],
       template: "modules/arbron-summoner/templates/summons-config.hbs",
       width: 500,
-      height: "auto"
+      height: "auto",
+      sheetConfig: false
     });
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  get title() {
+    return `${game.i18n.localize("ArbronSummoner.Config.Title")}: ${this.object.name}`;
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */

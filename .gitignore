@@ -1,2 +1,5 @@
 .DS_Store
 .nova
+
+arbron-summoner.lock
+node_modules

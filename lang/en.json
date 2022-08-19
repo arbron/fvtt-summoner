@@ -8,6 +8,18 @@
 
   "ArbronSummoner.ChatCard.SummonButton": "Summon",
 
+  "ArbronSummoner.Config.ActorChangesHeader": "Actor Changes",
+  "ArbronSummoner.Config.ActorChangesHint": "Use a syntax similar to Active Effects to modify arbitrary data on the summoned actor. The available roll data is that of the summoning actor.",
+  "ArbronSummoner.Config.AddChange": "Add Change",
+  "ArbronSummoner.Config.FormulaAC": "AC Formula",
+  "ArbronSummoner.Config.FormulaHP": "HP Formula",
+  "ArbronSummoner.Config.GeneralHeader": "General Changes",
+  "ArbronSummoner.Config.MatchProficiency": "Match Proficiency",
+  "ArbronSummoner.Config.MatchSaveDCs": "Match Save DCs",
+  "ArbronSummoner.Config.MatchToHit": "Match To Hit",
+  "ArbronSummoner.Config.Title": "Summons Configuration",
+  "ArbronSummoner.Config.UpdateConfiguration": "",
+
   "ArbronSummoner.Error.NoActor": "Original actor could not be found to summon.",
   "ArbronSummoner.Error.NoWarpGate": "Summoning requires the Warp Gate module be installed and active"
 }

@@ -1,7 +1,7 @@
 {
   "id": "arbron-summoner",
   "title": "Arbron’s Summoning",
-  "description": "",
+  "description": "Easy to use interface for configuring and summoning actors within DnD5e.",
   "authors": [
     {
       "name": "Jeff ‘Arbron’ Hitchcock",
@@ -15,9 +15,9 @@
   "url": "https://github.com/arbron/fvtt-summoner",
   "manifest": "",
   "download": "",
-  "readme": "",
-  "changelog": "",
-  "bugs": "",
+  "readme": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/readme.md",
+  "changelog": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/changelog.md",
+  "bugs": "https://github.com/arbron/fvtt-summoner/issues",
   "version": "1.0.0",
   "compatibility": {
     "minimum": "10.274",
@@ -29,7 +29,7 @@
         "id": "dnd5e",
         "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/v10-dev/system.json",
         "compatibility": {
-          "minimum": "2.0.0",
+          "minimum": "2.0.0-alpha3",
           "verified": "2.0"
         }
       }
@@ -58,8 +58,11 @@
       "path": "lang/en.json"
     }
   ],
-  "manifestPlusVersion": "1.1.0",
+  "manifestPlusVersion": "1.2.0",
   "flags": {
-    "allowBugReporter": true
+    "allowBugReporter": true,
+    "fvttdevleague": {
+        "package-jam": 2022
+    }
   }
 }
