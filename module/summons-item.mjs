@@ -22,10 +22,10 @@ export class SummonsItem {
     // Get copy of roll data & retrieve actor clone
     const actor = await fromUuid(uuid);
     if ( !actor ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoActor"));
-    const protoData = await actor.getTokenData();
+    const protoData = await actor.getTokenDocument();
 
     // Prepare actor data changes
-    const updates = SummonsActor.getChanges.bind(actor)(item);
+    const updates = SummonsActor.getChanges.bind(protoData.actor)(item);
 
     // Figure out where to place the summons
     item.parent?.sheet.minimize();
@@ -90,7 +90,7 @@ export class SummonsItem {
         name: s.name,
         uuid: s.uuid,
         item: await fromUuid(s.uuid),
-        link: game.dnd5e.utils._linkForUuid(s.uuid)
+        link: dnd5e.utils.linkForUuid(s.uuid)
       };
     }));
     return { summons };
@@ -167,9 +167,9 @@ export class SummonsItem {
    * Ensure the config dialog is always presented when a summons item is rolled that has summons configured.
    * @param {Item5e} item                   Item being rolled.
    * @param {ItemRollConfiguration} config  Configuration data for an item roll being prepared.
-   * @param {object} options                Additional roll options.
+   * @param {ItemRollOptions} options       Additional roll options.
    */
-  static preRoll(item, config, options) {
+  static preUseItem(item, config, options) {
     if ( item.system.actionType !== "summon" ) return;
     const summons = item.getFlag("arbron-summoner", "summons") ?? [];
     if ( !summons.length ) return;
@@ -231,7 +231,7 @@ export class SummonsItem {
    * @param {ItemRollConfiguration} config  Configuration data for the roll.
    * @param {ItemRollOptions} options       Additional options used for configuring item rolls.
    */
-  static roll(item, config, options) {
+  static useItem(item, config, options) {
     if ( (item.system.actionType !== "summon") ) return;
     const summons = item.getFlag("arbron-summoner", "summons") ?? [];
     if ( !summons.length ) return;
@@ -312,7 +312,7 @@ export class SummonsItem {
 
     // If not using stored data & upcast, prepare upcast item
     const upcastLevel = Number(card.dataset.spellLevel);
-    if ( !storedData && !Number.isNaN(upcastLevel) && upcastLevel !== item.data.data.level ) {
+    if ( !storedData && !Number.isNaN(upcastLevel) && upcastLevel !== item.system.level ) {
       item = item.clone({"system.level": upcastLevel}, {keepId: true});
       item.prepareData();
     }

@@ -40,13 +40,13 @@
         "type": "module",
         "manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
         "compatibility": {
-          "verified": "1.13"
+          "minimum": "1.14.!0"
         }
       }
     ]
   },
   "esmodules": [
-    "./module/main.mjs"
+    "./summoner.mjs"
   ],
   "styles": [
     "./styles/arbron-summons.css"

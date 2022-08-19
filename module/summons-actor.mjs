@@ -71,6 +71,7 @@ export class SummonsActor {
    * @param {Item5e} item  The item performing the summoning.
    */
   static getChanges(item) {
+    const clone = this.clone();
     const config = this.getFlag("arbron-summoner", "config");
     if ( !config ) return updates;
     const updates = { actor: {}, embedded: {} };
@@ -90,16 +91,15 @@ export class SummonsActor {
         label: game.i18n.localize("DND5E.Proficiency")
       }, { parent: this });
       updates.embedded.ActiveEffect = { [proficiencyEffect.label]: proficiencyEffect.toObject() };
-      this.updateSource({ effects: [proficiencyEffect.toObject()] });
-      this.prepareData();
+      clone.updateSource({ effects: [proficiencyEffect.toObject()] });
     }
 
     // Apply AC formula
-    const ac = game.dnd5e.utils.simplifyBonus(config.acFormula, rollData)
+    const ac = dnd5e.utils.simplifyBonus(config.acFormula, rollData)
     if ( ac ) updates.actor["system.attributes.ac.flat"] = ac;
 
     // Apply HP formula
-    const hp = game.dnd5e.utils.simplifyBonus(config.hpFormula, rollData);
+    const hp = dnd5e.utils.simplifyBonus(config.hpFormula, rollData);
     if ( hp ) {
       updates.actor["system.attributes.hp.max"] = hp;
       updates.actor["system.attributes.hp.value"] = hp;
@@ -108,13 +108,12 @@ export class SummonsActor {
     // Apply other actor data changes
     for ( const change of config.actorChanges ?? [] ) {
       const value = dnd5e.utils.simplifyBonus(change.value, rollData);
-      this.updateSource({ [change.key]: value });
+      clone.updateSource({ [change.key]: value });
       updates.actor[change.key] = value;
     }
-    this.prepareData();
 
     // Perform item changes
-    for ( const item of this.items ) {
+    for ( const item of clone.items ) {
       const itemUpdates = {};
 
       // Match item to hit to match summoner
