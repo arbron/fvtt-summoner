@@ -48,7 +48,7 @@ Now you just need to use the feature or spell from your character sheet and you 
 
 ![Summon Usage](images/summon-usage.webp)
 
-The item usage window will allow you to decide whether you want something summoned at all, and if so, which of the variants you configured should be created. Once you are done with your summoned actor, simply use the `"Disiss"` button on the sheet header to send them away.
+The item usage window will allow you to decide whether you want something summoned at all, and if so, which of the variants you configured should be created. Once you are done with your summoned actor, simply use the `"Dismiss"` button on the sheet header to send them away.
 
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I53RGZS)

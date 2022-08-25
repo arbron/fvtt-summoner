@@ -15,8 +15,13 @@ export class SummonsItem {
 
     // If UUID is blank, present selection UI for this item
     if ( !uuid ) {
-      console.log("NOT IMPLEMENTED");
-      return;
+      const summons = item.getFlag("arbron-summoner", "summons") ?? [];
+      if ( !summons.length ) return;
+      else if ( summons.length === 1 ) uuid = summons[0].uuid;
+      else {
+        try { uuid = await SummonsItem.promptSummonsType(summons); }
+        catch(err) { return; }
+      }
     }
 
     // Get copy of roll data & retrieve actor clone
@@ -44,6 +49,41 @@ export class SummonsItem {
       protoData, updates, undefined,
       { comparisonKeys: { Item: "_id" } }
     );
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
+   * Present the summons type selection prompt and await the result.
+   * @param {object[]} summons   Summons type configuration.
+   * @returns {Promise<string>}  Resolves to the selected UUID or rejects if no UUID selected.
+   */
+  static async promptSummonsType(summons) {
+    const selectSummons = SummonsItem.selectSummonsDropdown(summons);
+    return new Promise((resolve, reject) => {
+      const dialog = new Dialog({
+        title: "Select Summons Type",
+        content: `<form>${selectSummons.outerHTML}<br></form>`,
+        buttons: {
+          cancel: {
+            icon: '<i class="fas fa-times"></i>',
+            label: game.i18n.localize("Cancel"),
+            callback: () => reject(null)
+          },
+          summon: {
+            icon: '<i class="fa-solid fa-spaghetti-monster-flying"></i>',
+            label: game.i18n.localize("ArbronSummoner.ChatCard.SummonButton"),
+            callback: html => {
+              const input = html.querySelector("select[name='summonsType']");
+              if ( input?.value ) resolve(input.value);
+              else reject(null);
+            }
+          }
+        },
+        default: "summon"
+      }, { classes: ["dnd5e", "dialog"], jQuery: false });
+      dialog.render(true);
+    });
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -175,7 +215,7 @@ export class SummonsItem {
     if ( !summons.length ) return;
     config.needsConfiguration = true;
     config.createSummons = true;
-    config.summonsType = summons[0].uuid;
+    config.summonsType = null;
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -193,15 +233,7 @@ export class SummonsItem {
     if ( !summons.length ) return;
 
     // Create the summons dropdown
-    const summonsTypes = summons.reduce((s, {name, uuid}) => s + `<option value="${uuid}">${name}</option>`, "");
-    const selectSummons = $(`
-      <div class="form-group">
-        <label>${game.i18n.localize("ArbronSummoner.AbilityUse.ChooseSummons")}</label>
-        <div class="form-fields">
-          <select name="summonsType">${summonsTypes}</select>
-        </div>
-      </div>
-    `)[0];
+    const selectSummons = SummonsItem.selectSummonsDropdown(summons);
 
     // Insert summons dropdown beneath "Cast at Level" if available, otherwise beneath "Notes"
     const castAtLevel = html[0].querySelector("select[name='consumeSpellLevel']")?.closest("div.form-group");
@@ -226,6 +258,25 @@ export class SummonsItem {
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
 
   /**
+   * Produce the dropdown for selecting a summons type.
+   * @param {object[]} summons  Summons type configuration.
+   * @returns {Element}
+   */
+  static selectSummonsDropdown(summons) {
+    const summonsTypes = summons.reduce((s, {name, uuid}) => s + `<option value="${uuid}">${name}</option>`, "");
+    return $(`
+      <div class="form-group">
+        <label>${game.i18n.localize("ArbronSummoner.AbilityUse.ChooseSummons")}</label>
+        <div class="form-fields">
+          <select name="summonsType">${summonsTypes}</select>
+        </div>
+      </div>
+    `)[0];
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
    * Summon the monster if `createSummons` is true, otherwise retain the summons type.
    * @param {Item5e} item                   Item being rolled.
    * @param {ItemRollConfiguration} config  Configuration data for the roll.
@@ -241,7 +292,7 @@ export class SummonsItem {
     options.flags["arbron-summoner.showButton"] = true;
 
     // Trigger the summons
-    if ( config.createSummons ) SummonsItem.summon(item, config.summonsType);
+    if ( config.createSummons && config.summonsType ) SummonsItem.summon(item, config.summonsType);
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
