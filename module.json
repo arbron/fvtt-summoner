@@ -18,7 +18,7 @@
   "readme": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/readme.md",
   "changelog": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/changelog.md",
   "bugs": "https://github.com/arbron/fvtt-summoner/issues",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha",
   "compatibility": {
     "minimum": "10.274",
     "verified": "10"
@@ -49,7 +49,7 @@
     "./summoner.mjs"
   ],
   "styles": [
-    "./styles/arbron-summons.css"
+    "./summoner.css"
   ],
   "languages": [
     {
