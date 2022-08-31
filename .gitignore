@@ -1,5 +1,5 @@
 .DS_Store
 .nova
 
-arbron-summoner.lock
+/*.lock
 node_modules

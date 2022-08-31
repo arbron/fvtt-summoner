@@ -24,7 +24,9 @@ export class SummonsActor {
    * @param {object} context           The input data provided for template rendering.
    */
   static renderActorSheet(application, html, context) {
-    // TODO: Ensure we only add this to known actor sheets
+    if ( ![dnd5e.applications.actor.ActorSheet5eNPC,
+      dnd5e.applications.actor.ActorSheet5eVehicle].includes(application.constructor) ) return;
+
     const insertPoint = html[0].querySelector(".traits");
     insertPoint?.insertAdjacentElement("beforeend", SummonsActor.summonsConfigButton());
     html[0].querySelector("[data-action='summons-config']")
