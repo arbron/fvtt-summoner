@@ -7,8 +7,9 @@ export class SummonsActor {
   static summonsConfigButton() {
     return $(`
       <div class="form-group">
-        <label>Summons Configuration</label>
-        <a class="config-button" data-action="summons-config" title="Configure Summons">
+        <label>${game.i18n.localize("ArbronSummoner.Config.Title")}</label>
+        <a class="config-button" data-action="summons-config"
+          title="${game.i18n.localize("ArbronSummoner.Config.ButtonAction")}">
           <i class="fas fa-cog"></i>
         </a>
       </div>

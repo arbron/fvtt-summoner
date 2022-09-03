@@ -62,7 +62,7 @@ export class SummonsItem {
     const selectSummons = SummonsItem.selectSummonsDropdown(summons);
     return new Promise((resolve, reject) => {
       const dialog = new Dialog({
-        title: "Select Summons Type",
+        title: game.i18n.localize("ArbronSummoner.AbilityUse.SelectSummonsTypeHeader"),
         content: `<form>${selectSummons.outerHTML}<br></form>`,
         buttons: {
           cancel: {
