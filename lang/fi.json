@@ -2,5 +2,14 @@
   "ArbronSummoner.Config.FormulaHP": "KP-kaava",
   "ArbronSummoner.Config.FormulaAC": "PL-kaava",
   "ArbronSummoner.Config.ActorChangesHeader": "Hahmon muutokset",
-  "ArbronSummoner.ChatCard.SummonButton": "Esiinloihdi"
+  "ArbronSummoner.ChatCard.SummonButton": "Esiinloihdi",
+  "ArbronSummoner.Config.AddChange": "Lisää muutos",
+  "ArbronSummoner.Config.GeneralHeader": "Yleiset muutokset",
+  "ArbronSummoner.Error.NoActor": "Alkuperäistä hahmoa ei löydetty esiinloihdittavaksi.",
+  "ArbronSummoner.Error.NoWarpGate": "Esiinloihtiminen edellyttää, että Warp Gate -moduuli on asennettu ja käytössä",
+  "ArbronSummoner.Summoning": "Esiinloihtiminen",
+  "ArbronSummoner.SummonsHeader": "Esiinloihdittavat",
+  "ArbronSummoner.SummonsHint": "Pudota yksi tai useampi hahmo tähän määrittääksesi esiinloihdittavat",
+  "ArbronSummoner.Config.ActorChangesHint": "Käytä samanlaista syntaksia kuin aktiivisissa vaikutuksissa muokataksesi esiinloihdittavan hahmon tietoja. Käytettävissä olevat heittotiedot ovat esiinloihditun hahmon.",
+  "ArbronSummoner.Config.MatchProficiency": "Vastaa pätevyyslisä"
 }
