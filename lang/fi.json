@@ -1,1 +1,6 @@
-{}
+{
+  "ArbronSummoner.Config.FormulaHP": "KP-kaava",
+  "ArbronSummoner.Config.FormulaAC": "PL-kaava",
+  "ArbronSummoner.Config.ActorChangesHeader": "Hahmon muutokset",
+  "ArbronSummoner.ChatCard.SummonButton": "Esiinloihdi"
+}
