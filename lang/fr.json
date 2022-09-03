@@ -1,1 +1,14 @@
-{}
+{
+  "ArbronSummoner.Summoning": "Invocation",
+  "ArbronSummoner.SummonsHeader": "Invocations",
+  "ArbronSummoner.SummonsHint": "Déposez un ou plusieurs acteurs ici pour configurer les invocations",
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Choisissez le type des Invocations",
+  "ArbronSummoner.AbilityUse.PlaceSummons": "Placer les Invocations",
+  "ArbronSummoner.ChatCard.SummonButton": "Invoquer",
+  "ArbronSummoner.Config.ActorChangesHeader": "Modifications d'acteur",
+  "ArbronSummoner.Config.ActorChangesHint": "Utilisez une syntaxe similaire à celle des effets actifs pour modifier tout type de données sur l'acteur invoqué. Les données de jets disponibles sont celles de l'acteur invocateur.",
+  "ArbronSummoner.Config.AddChange": "Ajouter un changement",
+  "ArbronSummoner.Config.FormulaAC": "Formule CA",
+  "ArbronSummoner.Config.FormulaHP": "Formule PV",
+  "ArbronSummoner.Config.GeneralHeader": "Changements généraux"
+}
