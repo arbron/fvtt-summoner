@@ -33,7 +33,7 @@
       <div class="key">{{localize "EFFECT.ChangeKey"}}</div>
       <div class="value">{{localize "EFFECT.ChangeValue"}}</div>
       <div class="controls">
-        <a data-action="add-actor-change" title="{{localize 'ArbronSummoner.Config.AddChange'}}">
+        <a data-action="add-actor-change" data-tooltip="{{localize 'ArbronSummoner.Config.AddChange'}}">
           <i class="far fa-plus-square"></i>
         </a>
       </div>
@@ -48,7 +48,7 @@
             <input type="text" name="actorChanges.{{@index}}.value" value="{{this.value}}">
           </div>
           <div class="controls">
-            <a data-action="delete-actor-change" data-index="{{@index}}" title="{{localize 'Delete'}}">
+            <a data-action="delete-actor-change" data-index="{{@index}}" data-tooltip="{{localize 'Delete'}}">
               <i class="fas fa-trash"></i>
             </a>
           </div>

@@ -9,7 +9,7 @@ export class SummonsActor {
       <div class="form-group">
         <label>${game.i18n.localize("ArbronSummoner.Config.Title")}</label>
         <a class="config-button" data-action="summons-config"
-          title="${game.i18n.localize("ArbronSummoner.Config.ButtonAction")}">
+          data-tooltip="${game.i18n.localize("ArbronSummoner.Config.ButtonAction")}">
           <i class="fas fa-cog"></i>
         </a>
       </div>
@@ -45,7 +45,7 @@ export class SummonsActor {
   static renderActorSheetFlags(application, html, context) {
     const control = $(`
       <div class="arbron-summons-flags-area">
-        <h3 class="form-header">Summoning</h3>
+        <h3 class="form-header">${game.i18n.localize("ArbronSummoner.Summoning")}</h3>
         ${SummonsActor.summonsConfigButton().outerHTML}
       </div>
     `)[0];
