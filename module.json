@@ -61,6 +61,11 @@
             "lang": "ro",
             "name": "Română",
             "path": "lang/ro.json"
+        },
+        {
+            "lang": "fr",
+            "name": "Français",
+            "path": "lang/fr.json"
         }
     ],
     "manifestPlusVersion": "1.2.0",
