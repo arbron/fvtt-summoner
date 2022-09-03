@@ -1,1 +1,20 @@
-{}
+{
+  "ArbronSummoner.Summoning": "Invocare",
+  "ArbronSummoner.SummonsHeader": "Invocări",
+  "ArbronSummoner.SummonsHint": "Trageți unul sau mai mulți actori aici pentru a configura invocările",
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Alegeți Tipul Invocărilor",
+  "ArbronSummoner.AbilityUse.PlaceSummons": "Plasați Invocările",
+  "ArbronSummoner.ChatCard.SummonButton": "Invocare",
+  "ArbronSummoner.Config.ActorChangesHeader": "Schimbări Actori",
+  "ArbronSummoner.Config.AddChange": "Adaugați o Schimbare",
+  "ArbronSummoner.Config.FormulaAC": "Formula AC",
+  "ArbronSummoner.Config.ActorChangesHint": "Folosiți o sintagmă similară Efectelor Active pentru a modifica date aleatoare ale actorului invocat. Datele aruncărilor disponibile sunt cele ale actorului care invocă.",
+  "ArbronSummoner.Config.FormulaHP": "Formula HP",
+  "ArbronSummoner.Config.GeneralHeader": "Schimbări Generale",
+  "ArbronSummoner.Config.MatchProficiency": "Potriviți Proficiency",
+  "ArbronSummoner.Config.MatchSaveDCs": "Potriviți Save DC-urile",
+  "ArbronSummoner.Config.MatchToHit": "Potriviți To Hit",
+  "ArbronSummoner.Config.Title": "Configurația Invocărilor",
+  "ArbronSummoner.Error.NoActor": "Actorul original n-a fost găsit pentru invocare.",
+  "ArbronSummoner.Error.NoWarpGate": "Invocarea necesită ca modulul Warp Gate să fie instalat și activ"
+}
