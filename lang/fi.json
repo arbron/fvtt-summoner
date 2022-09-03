@@ -11,5 +11,6 @@
   "ArbronSummoner.SummonsHeader": "Esiinloihdittavat",
   "ArbronSummoner.SummonsHint": "Pudota yksi tai useampi hahmo tähän määrittääksesi esiinloihdittavat",
   "ArbronSummoner.Config.ActorChangesHint": "Käytä samanlaista syntaksia kuin aktiivisissa vaikutuksissa muokataksesi esiinloihdittavan hahmon tietoja. Käytettävissä olevat heittotiedot ovat esiinloihditun hahmon.",
-  "ArbronSummoner.Config.MatchProficiency": "Vastaa pätevyyslisä"
+  "ArbronSummoner.Config.MatchProficiency": "Vastaa pätevyyslisä",
+  "ArbronSummoner.Config.MatchSaveDCs": "Vastaa laisto VA:t"
 }
