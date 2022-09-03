@@ -56,14 +56,34 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    },
+    {
+      "lang": "ro",
+      "name": "Română",
+      "path": "lang/ro.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    },
+    {
+      "lang": "fi",
+      "name": "Suomi",
+      "path": "lang/fi.json"
     }
   ],
   "manifestPlusVersion": "1.2.0",
-  "includes": ["changelog.md", "images/", "LICENSE", "readme.md"],
+  "includes": [
+    "changelog.md",
+    "images/",
+    "LICENSE",
+    "readme.md"
+  ],
   "flags": {
     "allowBugReporter": true,
     "fvttdevleague": {
-        "package-jam": 2022
+      "package-jam": 2022
     }
   }
 }
