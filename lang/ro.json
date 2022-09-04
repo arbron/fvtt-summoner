@@ -16,5 +16,5 @@
   "ArbronSummoner.Config.MatchToHit": "Potriviți To Hit",
   "ArbronSummoner.Config.Title": "Configurația Invocărilor",
   "ArbronSummoner.Error.NoActor": "Actorul original n-a fost găsit pentru invocare.",
-  "ArbronSummoner.Error.NoWarpGate": "Invocarea necesită ca modulul Warp Gate să fie instalat și activ"
+  "ArbronSummoner.Error.NoWarpGate": "Invocarea necesită ca modulul Warp Gate să fie instalat și activ."
 }
