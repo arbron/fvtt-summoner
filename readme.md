@@ -47,7 +47,7 @@ Next, click the `"Summons Configuration"` button that appears on the bottom of t
 Once this configuration is complete, it is time to perform any necessary duplication to your actor to create variants. I also recommend placing these finished actors in a compendium before configuring your features.
 
 
-### Step 2: Configure Summoning Features
+### Step 3: Configure Summoning Features
 
 Next, it is time to modify your feature or spell to handle the summoning. Open up the details page on your item and change the `"Action Type"` to the new `"Summoning"` type. This will display a new section near the bottom with a drop area. Drop the actor or actors you prepared above into this area to indicate they can be summoned.
 
@@ -58,7 +58,7 @@ Next, it is time to modify your feature or spell to handle the summoning. Open u
 The name field next to the item will change the name as displayed in the summoning window, but will not change the name of the summoned actor.
 
 
-### Step 3: Get Summoning
+### Step 4: Get Summoning
 
 Now you just need to use the feature or spell from your character sheet and you will be able to summon the creature:
 
