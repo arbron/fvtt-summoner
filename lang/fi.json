@@ -6,11 +6,15 @@
   "ArbronSummoner.Config.AddChange": "Lisää muutos",
   "ArbronSummoner.Config.GeneralHeader": "Yleiset muutokset",
   "ArbronSummoner.Error.NoActor": "Alkuperäistä hahmoa ei löydetty esiinloihdittavaksi.",
-  "ArbronSummoner.Error.NoWarpGate": "Esiinloihtiminen edellyttää, että Warp Gate -moduuli on asennettu ja käytössä",
-  "ArbronSummoner.Summoning": "Esiinloihtiminen",
+  "ArbronSummoner.Error.NoWarpGate": "Esiinloihtiminen edellyttää, että Warp Gate -moduuli on asennettu ja käytössä.",
+  "ArbronSummoner.Summoning": "Esiinloihdinta",
   "ArbronSummoner.SummonsHeader": "Esiinloihdittavat",
   "ArbronSummoner.SummonsHint": "Pudota yksi tai useampi hahmo tähän määrittääksesi esiinloihdittavat",
   "ArbronSummoner.Config.ActorChangesHint": "Käytä samanlaista syntaksia kuin aktiivisissa vaikutuksissa muokataksesi esiinloihdittavan hahmon tietoja. Käytettävissä olevat heittotiedot ovat esiinloihditun hahmon.",
   "ArbronSummoner.Config.MatchProficiency": "Vastaa pätevyyslisä",
-  "ArbronSummoner.Config.MatchSaveDCs": "Vastaa laisto VA:t"
+  "ArbronSummoner.Config.MatchSaveDCs": "Vastaa laisto VA:t",
+  "ArbronSummoner.Config.Title": "Esiinloihdittavan määritykset",
+  "ArbronSummoner.AbilityUse.PlaceSummons": "Aseta esiinloihdittava",
+  "ArbronSummoner.Config.MatchToHit": "Vastaa hyökkäyshyvitys",
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Valitse esiinloihdittavan tyyppi"
 }

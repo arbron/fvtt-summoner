@@ -2,7 +2,7 @@
   "ArbronSummoner.Summoning": "Invocation",
   "ArbronSummoner.SummonsHeader": "Invocations",
   "ArbronSummoner.SummonsHint": "Déposez un ou plusieurs acteurs ici pour configurer les invocations",
-  "ArbronSummoner.AbilityUse.ChooseSummons": "Choisissez le type des Invocations",
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Choisir le Type d'Invocations",
   "ArbronSummoner.AbilityUse.PlaceSummons": "Placer les Invocations",
   "ArbronSummoner.ChatCard.SummonButton": "Invoquer",
   "ArbronSummoner.Config.ActorChangesHeader": "Modifications d'acteur",
@@ -10,5 +10,15 @@
   "ArbronSummoner.Config.AddChange": "Ajouter un changement",
   "ArbronSummoner.Config.FormulaAC": "Formule CA",
   "ArbronSummoner.Config.FormulaHP": "Formule PV",
-  "ArbronSummoner.Config.GeneralHeader": "Changements généraux"
+  "ArbronSummoner.Config.GeneralHeader": "Changements généraux",
+  "ArbronSummoner.Config.MatchProficiency": "Accorder la Maîtrise",
+  "ArbronSummoner.Config.MatchSaveDCs": "Accorder les DC de Sauvegarde",
+  "ArbronSummoner.Config.MatchToHit": "Accorder le Bonus d'Attaque",
+  "ArbronSummoner.Config.Title": "Configuration de l'Invocation",
+  "ArbronSummoner.Error.NoWarpGate": "Invocation requière que le module Warp Gate soit installé et activé.",
+  "ArbronSummoner.Error.NoActor": "l'Acteur d'origine n'est pas disponible pour Invoquer.",
+  "ArbronSummoner.Config.ButtonAction": "Configurer les Invocations",
+  "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Choisir le Type d'Invocation",
+  "ArbronSummoner.Tooltip.DisplayName": "Nom Affiché",
+  "ArbronSummoner.Tooltip.RemoveSummons": "Retirer les Invocations"
 }

@@ -3,12 +3,11 @@
   "ArbronSummoner.SummonsHeader": "Summons",
   "ArbronSummoner.SummonsHint": "Drop one or more actors here to configure summons",
 
-  "ArbronSummoner.AbilityUse.ChooseSummons": "Choose Summons Type",
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Choose Type to Summon",
   "ArbronSummoner.AbilityUse.PlaceSummons": "Place Summons",
   "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Select Summons Type",
 
   "ArbronSummoner.ChatCard.SummonButton": "Summon",
-
   "ArbronSummoner.Config.ActorChangesHeader": "Actor Changes",
   "ArbronSummoner.Config.ActorChangesHint": "Use a syntax similar to Active Effects to modify arbitrary data on the summoned actor. The available roll data is that of the summoning actor.",
   "ArbronSummoner.Config.AddChange": "Add Change",
@@ -19,11 +18,9 @@
   "ArbronSummoner.Config.MatchProficiency": "Match Proficiency",
   "ArbronSummoner.Config.MatchSaveDCs": "Match Save DCs",
   "ArbronSummoner.Config.MatchToHit": "Match To Hit",
-  "ArbronSummoner.Config.Title": "Summons Configuration",
-
+  "ArbronSummoner.Config.Title": "Summon Configuration",
   "ArbronSummoner.Error.NoActor": "Original actor could not be found to summon.",
-  "ArbronSummoner.Error.NoWarpGate": "Summoning requires the Warp Gate module be installed and active",
-
+  "ArbronSummoner.Error.NoWarpGate": "Summoning requires the Warp Gate module be installed and active.",
   "ArbronSummoner.Tooltip.DisplayName": "Display Name",
   "ArbronSummoner.Tooltip.RemoveSummons": "Remove Summons"
 }
