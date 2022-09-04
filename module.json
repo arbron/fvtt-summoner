@@ -18,7 +18,7 @@
   "readme": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/readme.md",
   "changelog": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/changelog.md",
   "bugs": "https://github.com/arbron/fvtt-summoner/issues",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "compatibility": {
     "minimum": "10.274",
     "verified": "10"
