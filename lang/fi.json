@@ -6,7 +6,7 @@
   "ArbronSummoner.Config.AddChange": "Lisää muutos",
   "ArbronSummoner.Config.GeneralHeader": "Yleiset muutokset",
   "ArbronSummoner.Error.NoActor": "Alkuperäistä hahmoa ei löydetty esiinloihdittavaksi.",
-  "ArbronSummoner.Error.NoWarpGate": "Esiinloihtiminen edellyttää, että Warp Gate -moduuli on asennettu ja käytössä",
+  "ArbronSummoner.Error.NoWarpGate": "Esiinloihtiminen edellyttää, että Warp Gate -moduuli on asennettu ja käytössä.",
   "ArbronSummoner.Summoning": "Esiinloihdinta",
   "ArbronSummoner.SummonsHeader": "Esiinloihdittavat",
   "ArbronSummoner.SummonsHint": "Pudota yksi tai useampi hahmo tähän määrittääksesi esiinloihdittavat",
