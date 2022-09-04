@@ -5,6 +5,8 @@
 - Add [French] translation
 - Add [Romanian] translation
 - Improve documentation to include sectioned on roll data available to summoned actors [[#3]]
+- Fix issue with summoning actors that haven't had any configured set up [[#4]]
+- Fix issue with summoner roll data not being available for summoned actor [[#5]]
 
 # [1.0.2]
 - Add missing translations strings [[#2]]
@@ -23,6 +25,8 @@
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
+[#4]: https://github.com/arbron/fvtt-summoner/issues/4
+[#5]: https://github.com/arbron/fvtt-summoner/issues/5
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/

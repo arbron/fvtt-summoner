@@ -76,9 +76,13 @@ export class SummonsActor {
   static getChanges(item) {
     const clone = this.clone();
     const config = this.getFlag("arbron-summoner", "config");
-    if ( !config ) return updates;
     const updates = { actor: {}, embedded: {} };
     const rollData = item.getRollData();
+  
+    // Store roll data & summoner information in flags
+    foundry.utils.setProperty(updates.actor, "flags.arbron-summoner.summoner", { uuid: item.uuid, data: rollData });
+
+    if ( !config ) return updates;
     const toHitTarget = config.matchToHit ? SummonsActor._determineToHit(item) : 0;
 
     // Modify proficiency to match summoner using an active effect
@@ -138,9 +142,6 @@ export class SummonsActor {
       }
     }
 
-    // Store roll data & summoner information in flags
-    foundry.utils.setProperty(updates.actor, "flags.arbron-summoner.summoner", { uuid: item.uuid, data: rollData });
-
     return updates;
   }
 
@@ -163,6 +164,23 @@ export class SummonsActor {
     const ability = item.actor.system.attributes.spellcasting ?? item.abilityMod;
     const abilityMod = foundry.utils.getProperty(item.actor, `system.abilities.${ability}.mod`) ?? 0;
     return item.actor.system.attributes.prof + abilityMod;
+  }
+  
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
+   * Add summoner data to an actor's getRollData.
+   * @returns {object}  Modified roll data.
+   */
+  static getRollData(wrapped) {
+    const rollData = wrapped();
+    if ( !rollData ) return rollData;
+
+    const summoner = this.getFlag("arbron-summoner", "summoner");
+    if ( !summoner?.data ) return rollData;
+
+    rollData.summoner = summoner.data;
+    return rollData;
   }
 
 }

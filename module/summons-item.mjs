@@ -372,21 +372,4 @@ export class SummonsItem {
     SummonsItem.summon(item, uuid);
   }
 
-  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
-
-  /**
-   * Add summoner data to an item's getRollData.
-   * @returns {object}  Modified roll data.
-   */
-  static getRollData(wrapped) {
-    const rollData = wrapped();
-    if ( !rollData ) return rollData;
-
-    const summoner = this.actor.getFlag("arbron-summoner", "summoner");
-    if ( !summoner?.data ) return rollData;
-
-    rollData.summoner = summoner.data;
-    return rollData;
-  }
-
 }

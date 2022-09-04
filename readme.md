@@ -23,6 +23,8 @@ Summoned creatures can reference the roll data of their summoner using the `@sum
 <img alt="Item damage configuration with the formula `1d8 + 4 + @summoner.item.level`"
   src="images/summoner-roll-data.webp" width="750">
 
+> ***Note***: This summoner information is locked the moment the summoning occurs. Any subsequent changes to the summoner will not be reflected in the summoned actor.
+
 
 ### Step 2: Configure Actor
 
