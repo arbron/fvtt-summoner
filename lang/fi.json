@@ -16,5 +16,9 @@
   "ArbronSummoner.Config.Title": "Esiinloihdittavan määritykset",
   "ArbronSummoner.AbilityUse.PlaceSummons": "Aseta esiinloihdittava",
   "ArbronSummoner.Config.MatchToHit": "Vastaa hyökkäyshyvitys",
-  "ArbronSummoner.AbilityUse.ChooseSummons": "Valitse esiinloihdittavan tyyppi"
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Valitse esiinloihdittavan tyyppi",
+  "ArbronSummoner.Config.ButtonAction": "Määritä esiinloihdittavat",
+  "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Valitse esiinloihdittavan tyyppi",
+  "ArbronSummoner.Tooltip.DisplayName": "Näyttönimi",
+  "ArbronSummoner.Tooltip.RemoveSummons": "Poista esiinloihdittava"
 }
