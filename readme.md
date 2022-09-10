@@ -1,4 +1,4 @@
-# Arbron’s Summoner
+# Arbron’s Summoning
 
 Easy to use interface for configuring and summoning actors within DnD5e.
 
@@ -47,7 +47,7 @@ Next, click the `"Summons Configuration"` button that appears on the bottom of t
 Once this configuration is complete, it is time to perform any necessary duplication to your actor to create variants. I also recommend placing these finished actors in a compendium before configuring your features.
 
 
-### Step 3: Configure Summoning Features
+### Step 3: Configure Summoning Feature or Spell
 
 Next, it is time to modify your feature or spell to handle the summoning. Open up the details page on your item and change the `"Action Type"` to the new `"Summoning"` type. This will display a new section near the bottom with a drop area. Drop the actor or actors you prepared above into this area to indicate they can be summoned.
 

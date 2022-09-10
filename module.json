@@ -18,7 +18,7 @@
   "readme": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/readme.md",
   "changelog": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/changelog.md",
   "bugs": "https://github.com/arbron/fvtt-summoner/issues",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "compatibility": {
     "minimum": "10.274",
     "verified": "10"
@@ -71,6 +71,15 @@
       "lang": "fi",
       "name": "Suomi",
       "path": "lang/fi.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "instructions",
+      "label": "Arbron’s Summoner",
+      "system": "dnd5e",
+      "path": "./packs/instructions.db",
+      "type": "JournalEntry"
     }
   ],
   "manifestPlusVersion": "1.2.0",

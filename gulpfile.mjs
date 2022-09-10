@@ -1,41 +1,19 @@
-import fs from "fs";
 import gulp from "gulp";
-import nodeResolve from "@rollup/plugin-node-resolve";
-import path from "path";
-import { rollup } from "rollup";
+
+import * as javascript from "./utils/javascript.mjs";
+import * as packs from "./utils/packs.mjs";
 
 
-/**
- * Cache of the manifest file in case it needs to be accessed more than once.
- * @type {object}
- */
-let cached_manifest;
+// Javascript compiling & linting
+export const buildJS = gulp.series(javascript.compile);
 
+// Compendium pack management
+export const cleanPacks = gulp.series(packs.clean);
+export const compilePacks = gulp.series(packs.compile);
+export const extractPacks = gulp.series(packs.extract);
 
-async function fetchManifest() {
-  if ( !cached_manifest ) cached_manifest = JSON.parse(await fs.promises.readFile("./module.json"));
-  return cached_manifest;
-}
-
-
-async function compileJavascript() {
-  const manifest = await fetchManifest();
-  for ( const esmodulePath of manifest.esmodules ) {
-    const parsedPath = path.parse(esmodulePath);
-    delete parsedPath.base;
-    const compiledPath = path.format({ ...parsedPath, name: `${parsedPath.name}-compiled` });
-    const sourcemapFile = path.format({ name: parsedPath.name, ext: parsedPath.ext });
-
-    const bundle = await rollup({
-      input: esmodulePath,
-      plugins: [nodeResolve()]
-    });
-    await bundle.write({
-      file: compiledPath,
-      format: "es",
-      sourcemap: true,
-      sourcemapFile: sourcemapFile
-    });
-  }
-}
-export const buildJS = gulp.series(compileJavascript);
+// Build all artifacts
+export const buildAll = gulp.parallel(
+  javascript.compile,
+  packs.compile
+);

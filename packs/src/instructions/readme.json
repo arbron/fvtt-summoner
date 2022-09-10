@@ -1,0 +1,158 @@
+{
+  "name": "Readme",
+  "pages": [
+    {
+      "name": "Introduction",
+      "type": "text",
+      "_id": "vmGUsfsd4KoEdWJb",
+      "title": {
+        "show": false,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<img src=\"modules/arbron-summoner/images/title.webp\" style=\"border:none\" /><p>This module is designed to make it easy as pie to summon creatures within DnD5e using a simple interface that integrates seamlessly into the standard 5e experience. The module makes use of Honeybadger's excellent <a href=\"https://github.com/trioderegion/warpgate\">Warp Gate</a> module to handle the creation and placement of the actors.</p><p>Note: This module is designed to make it easy to implement spells like <em>Summon Undead</em> or <em>Dancing Lights</em> and features like <em>Summon Wildfire Spirit</em> that summon a specific actor template that requires modification based on the casting or caster level. It is not designed for spells like <em>Conjure Woodland Beings</em> that can summon any number of different types of creatures without modification.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {}
+    },
+    {
+      "name": "Create Actor to be Summoned",
+      "type": "text",
+      "_id": "pIpcmIxteAVe32ZS",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>First, create the actor you wish to summon with its default stats. For spells that summon several variants of a single creature template (such as <em>Summon Undead</em>), I recommend creating a single version initially and then splitting into variants once the initial configuration is complete to save work.</p><p>Summoned creatures can reference the roll data of their summoner using the <code>@summoner</code> reference in a formula. For example, you wanted to add the casting spell's level in damage you could write <code>@summoner.item.level</code>.</p><img src=\"modules/arbron-summoner/images/summoner-roll-data.webp\" style=\"max-width:600px\" /><blockquote><p><em><strong>Note</strong></em>: This summoner information is locked the moment the summoning occurs. Any subsequent changes to the summoner will not be reflected in the summoned actor.</p></blockquote>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {}
+    },
+    {
+      "name": "Configure Actor",
+      "type": "text",
+      "_id": "etqlzT4pAycqitKk",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Next, click the <em>Summons Configuration</em> button that appears on the bottom of the default NPC sheet or within the <em>Special Traits</em> menu on other sheets to being customizing the configuration.</p><img src=\"modules/arbron-summoner/images/actor-configuration.webp\" style=\"max-width:600px\" /><ul><li><p><strong>Match Proficiency</strong>: Will modify the summoned creature's proficiency to equal that of the summoner.</p></li><li><p><strong>Match To Hit</strong>: Will modify the summoned creatures attacks to match the summoner's to hit value as best as possible.</p></li><li><p><strong>Match Save DCs</strong>: Will modify any feature with a save DC to use the save DC for the summoning spell or feature.</p></li><li><p><strong>AC Formula</strong> &amp; <strong>HP Formula</strong>: Will adjust the summoned actor's values to match the formula entered. This formula takes roll data from the summoning feature, so <code>@item.level</code> will be the level of the spell cast, and <code>@details.level</code> will be the level of the caster.</p></li><li><p><strong>Actor Changes</strong>: Allows for additional active effect-like modifications to the summoned actor.</p></li></ul><img src=\"modules/arbron-summoner/images/actor-changes.webp\" style=\"max-width:600px\" /><p>Once this configuration is complete, it is time to perform any necessary duplication to your actor to create variants. I also recommend placing these finished actors in a compendium before configuring your features.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {
+        "core": {
+          "sheetClass": ""
+        }
+      }
+    },
+    {
+      "name": "Configure Summoning Feature or Spell",
+      "type": "text",
+      "_id": "OG1ncjfjrb6MXhJi",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Next, it is time to modify your feature or spell to handle the summoning. Open up the details page on your item and change the <code>\"Action Type\"</code> to the new <code>\"Summoning\"</code> type. This will display a new section near the bottom with a drop area. Drop the actor or actors you prepared above into this area to indicate they can be summoned.</p><img src=\"modules/arbron-summoner/images/feature-configuration.webp\" style=\"max-width:600px\" /><p>The name field next to the item will change the name as displayed in the summoning window, but will not change the name of the summoned actor.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {
+        "core": {
+          "sheetClass": ""
+        }
+      }
+    },
+    {
+      "name": "Get Summoning",
+      "type": "text",
+      "_id": "3eqM29c4RfVWT1aA",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Now you just need to use the feature or spell from your character sheet and you will be able to summon the creature:</p><img src=\"modules/arbron-summoner/images/summon-usage.webp\" style=\"max-width:600px\" /><p>The item usage window will allow you to decide whether you want something summoned at all, and if so, which of the variants you configured should be created. Once you are done with your summoned actor, simply use the <em>Dismiss</em> button on the sheet header to send them away.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {}
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "2.0.2",
+    "coreVersion": "10.285",
+    "createdTime": 1662845277195,
+    "modifiedTime": 1662846396277,
+    "lastModifiedBy": "fG5sLzl9ydTwlYGM"
+  },
+  "folder": null,
+  "sort": 0,
+  "_id": "T8TN8o4xSv69iT66"
+}
