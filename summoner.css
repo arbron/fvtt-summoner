@@ -64,3 +64,8 @@
   flex: 0 0 24px;
   text-align: center;
 }
+
+.tidy5e.sheet.actor .traits .arbron-summons label span {
+  display: inline-block;
+  margin-left: 4px;
+}

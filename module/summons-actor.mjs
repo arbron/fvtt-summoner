@@ -18,6 +18,24 @@ export class SummonsActor {
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
 
+  static summonsConfigButtonTidySheet() {
+    return $(`
+      <div class="form-group arbron-summons">
+        <article title="${game.i18n.localize("ArbronSummoner.Config.Title")}">
+          <label>
+            <i class="fa-solid fa-spaghetti-monster-flying"></i>
+            <span>${game.i18n.localize("ArbronSummoner.Config.Title")}</span>
+          </label>
+        </article>
+        <a class="config-button" data-action="summons-config">
+          <i class="fas fa-pencil-alt"></i>
+        </a>
+      </div>
+    `)[0];
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
   /**
    * Insert the summons configuration button beneath "Special Traits" on actor sheets.
    * @param {ItemSheet5e} application  The Actor sheet being rendered.
@@ -25,11 +43,28 @@ export class SummonsActor {
    * @param {object} context           The input data provided for template rendering.
    */
   static renderActorSheet(application, html, context) {
-    if ( ![dnd5e.applications.actor.ActorSheet5eNPC,
-      dnd5e.applications.actor.ActorSheet5eVehicle].includes(application.constructor) ) return;
+    const traits = html[0].querySelector(".traits");
+    if ( !traits ) return;
 
-    const insertPoint = html[0].querySelector(".traits");
-    insertPoint?.insertAdjacentElement("beforeend", SummonsActor.summonsConfigButton());
+    switch (application.constructor.name) {
+      case "ActorSheet5eNPC":
+      case "ActorSheet5eVehicle":
+        traits.insertAdjacentElement("beforeend", SummonsActor.summonsConfigButton());
+        html[0].querySelector("[data-action='summons-config']")
+          .addEventListener("click", SummonsActor.onSummonsConfigClicked.bind(application));
+        break;
+      case "Tidy5eNPC":
+      case "Tidy5eVehicle":
+        if ( !traits?.classList.contains("expanded") ) return;
+        const insertPoint = traits.querySelector(".toggle-traits");
+        const insertedElement = SummonsActor.summonsConfigButtonTidySheet();
+        if ( insertPoint ) insertPoint.insertAdjacentElement("beforebegin", insertedElement);
+        else traits.insertAdjacentElement("beforeend", insertedElement);
+        break;
+      default:
+        return;
+    }
+
     html[0].querySelector("[data-action='summons-config']")
       .addEventListener("click", SummonsActor.onSummonsConfigClicked.bind(application));
   }

@@ -1,6 +1,7 @@
 # Changelog
 
 ## [1.0.4]
+- Add summon configuration button to TidySheet [[#8]]
 - Add Readme and Changelog into journal
 
 ## [1.0.3]
@@ -31,6 +32,7 @@
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
 [#4]: https://github.com/arbron/fvtt-summoner/issues/4
 [#5]: https://github.com/arbron/fvtt-summoner/issues/5
+[#8]: https://github.com/arbron/fvtt-summoner/issues/8
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/
