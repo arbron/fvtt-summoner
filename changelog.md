@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.5]
+- Fix issue with summoned type not getting stored in chat message [[#12]]
+
 ## [1.0.4]
 - Add summon configuration button to TidySheet [[#8]]
 - Add Readme and Changelog into journal
@@ -27,12 +30,14 @@
 [1.0.2]: https://github.com/arbron/fvtt-summoner/compare/1.0.1...1.0.2
 [1.0.3]: https://github.com/arbron/fvtt-summoner/compare/1.0.2...1.0.3
 [1.0.4]: https://github.com/arbron/fvtt-summoner/compare/1.0.3...1.0.4
+[1.0.5]: https://github.com/arbron/fvtt-summoner/compare/1.0.4...1.0.5
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
 [#4]: https://github.com/arbron/fvtt-summoner/issues/4
 [#5]: https://github.com/arbron/fvtt-summoner/issues/5
 [#8]: https://github.com/arbron/fvtt-summoner/issues/8
+[#12]: https://github.com/arbron/fvtt-summoner/issues/12
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/

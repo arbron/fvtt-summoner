@@ -204,15 +204,25 @@ export class SummonsItem {
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
 
   /**
+   * Fetch the summons configuration from the provided item if available.
+   * @param {Item5e} item      Item from which to fetch the configuration.
+   * @returns {object[]|void}  Configuration data if available.
+   */
+  static getSummonsConfiguration(item) {
+    if ( (item.system.actionType !== "summon") ) return;
+    return item.getFlag("arbron-summoner", "summons");
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
    * Ensure the config dialog is always presented when a summons item is rolled that has summons configured.
    * @param {Item5e} item                   Item being rolled.
    * @param {ItemRollConfiguration} config  Configuration data for an item roll being prepared.
    * @param {ItemRollOptions} options       Additional roll options.
    */
   static preUseItem(item, config, options) {
-    if ( item.system.actionType !== "summon" ) return;
-    const summons = item.getFlag("arbron-summoner", "summons") ?? [];
-    if ( !summons.length ) return;
+    if ( !SummonsItem.getSummonsConfiguration(item)?.length ) return;
     config.needsConfiguration = true;
     config.createSummons = true;
     config.summonsType = null;
@@ -228,9 +238,8 @@ export class SummonsItem {
    */
   static renderAbilityUseDialog(dialog, html, data) {
     const item = dialog.item;
-    if ( item.system.actionType !== "summon" ) return;
-    const summons = item.getFlag("arbron-summoner", "summons") ?? [];
-    if ( !summons.length ) return;
+    const summons = SummonsItem.getSummonsConfiguration(item);
+    if ( !summons?.length ) return;
 
     // Create the summons dropdown
     const selectSummons = SummonsItem.selectSummonsDropdown(summons);
@@ -277,19 +286,29 @@ export class SummonsItem {
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
 
   /**
+   * Store selected summons type in flag.
+   * @param {Item5e} item                     Item being used.
+   * @param {ItemUseConfiguration} config     Configuration data for the item usage being prepared.
+   * @param {ItemUseOptions} options          Additional options used for configuring item usage.
+   */
+  static itemUsageConsumption(item, config, options) {
+    if ( !SummonsItem.getSummonsConfiguration(item)?.length ) return;
+
+    // Store the selected summons type for the roll message
+    if ( config.summonsType ) options.flags["arbron-summoner.summonsType"] = config.summonsType;
+    options.flags["arbron-summoner.showButton"] = true;
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
    * Summon the monster if `createSummons` is true, otherwise retain the summons type.
    * @param {Item5e} item                   Item being rolled.
    * @param {ItemRollConfiguration} config  Configuration data for the roll.
    * @param {ItemRollOptions} options       Additional options used for configuring item rolls.
    */
   static useItem(item, config, options) {
-    if ( (item.system.actionType !== "summon") ) return;
-    const summons = item.getFlag("arbron-summoner", "summons") ?? [];
-    if ( !summons.length ) return;
-
-    // Store the selected summons type for the roll message
-    if ( config.summonsType ) options.flags["arbron-summoner.summonsType"] = config.summonsType;
-    options.flags["arbron-summoner.showButton"] = true;
+    if ( !SummonsItem.getSummonsConfiguration(item)?.length ) return;
 
     // Trigger the summons
     if ( config.createSummons && config.summonsType ) SummonsItem.summon(item, config.summonsType);
@@ -304,9 +323,7 @@ export class SummonsItem {
    * @param {ItemRollOptions} options  Options which configure the display of the item chat card.
    */
   static preDisplayCard(item, chatData, options) {
-    if ( (item.system.actionType !== "summon") ) return;
-    const summons = item.getFlag("arbron-summoner", "summons") ?? [];
-    if ( !summons.length ) return;
+    if ( !SummonsItem.getSummonsConfiguration(item)?.length ) return;
 
     const uuid = foundry.utils.getProperty(chatData.flags, "arbron-summoner.summonsType");
     const button = $(`
