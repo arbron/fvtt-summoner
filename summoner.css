@@ -22,13 +22,19 @@
   text-align: center;
 }
 
+.arbron-summons-area .summons-count {
+  flex: 0.25;
+  margin-inline-end: 0.5em;
+  text-align: center;
+}
+
+.arbron-summons-area .summons-name {
+  flex: 2;
+}
+
 .arbron-summons-area .arbron-summons-actor-link {
   flex: 2;
   padding-block-start: 4px;
-}
-
-.arbron-summons-area ol li input {
-  flex: 3;
 }
 
 .arbron-summons-area .arbron-summons-delete {

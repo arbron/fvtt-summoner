@@ -3,9 +3,11 @@
   <ol>
     {{#each summons}}
       <li data-index="{{@index}}">
+        <input type="number" name="flags.arbron-summoner.summons.{{@index}}.count" class="summons-count"
+          value="{{this.count}}" data-tooltip="{{localize 'ArbronSummoner.Tooltip.Count'}}">
         <span class="arbron-summons-actor-link">{{{this.link}}}</span>
-        <input type="text" name="flags.arbron-summoner.summons.{{@index}}.name" value="{{this.name}}"
-          data-tooltip="{{localize 'ArbronSummoner.Tooltip.DisplayName'}}">
+        <input type="text" name="flags.arbron-summoner.summons.{{@index}}.name" class="summons-name"
+          value="{{this.name}}" data-tooltip="{{localize 'ArbronSummoner.Tooltip.DisplayName'}}">
         <input type="hidden" name="flags.arbron-summoner.summons.{{@index}}.uuid" value="{{this.uuid}}">
         <a class="arbron-summons-delete" data-tooltip="{{localize 'ArbronSummoner.Tooltip.RemoveSummons'}}">
           <i class="fas fa-minus"></i>

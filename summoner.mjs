@@ -28,6 +28,7 @@ Hooks.on("preUpdateItem", SummonsItem.preUpdateItem);
 
 // Item Rolling & Chat Message Hooks
 Hooks.on("dnd5e.preUseItem", SummonsItem.preUseItem);
+Hooks.on("dnd5e.itemUsageConsumption", SummonsItem.itemUsageConsumption);
 Hooks.on("dnd5e.preDisplayCard", SummonsItem.preDisplayCard);
 Hooks.on("dnd5e.useItem", SummonsItem.useItem);
 Hooks.on("renderAbilityUseDialog", SummonsItem.renderAbilityUseDialog);
