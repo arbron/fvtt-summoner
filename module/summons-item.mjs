@@ -6,49 +6,55 @@ export class SummonsItem {
 
   /**
    * Perform the summons of the specified type.
-   * @param {Item5e} item    The item performing the summoning.
-   * @param {string} [uuid]  UUID of the actor to summon. If blank, then the type selection UI will be shown.
+   * @param {Item5e} item           The item performing the summoning.
+   * @param {string} [summonsData]  Data of the actor to summon. If blank, then the type selection UI will be shown.
    */
-  static async summon(item, uuid) {
+  static async summon(item, summonsData) {
     // Ensure Warp Gate is installed and enabled, otherwise throw an error
     if ( !globalThis.warpgate ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoWarpGate"));
 
-    // If UUID is blank, present selection UI for this item
-    if ( !uuid ) {
+    // If summons data is blank, present selection UI for this item
+    if ( !summonsData ) {
       const summons = item.getFlag("arbron-summoner", "summons") ?? [];
       if ( !summons.length ) return;
-      else if ( summons.length === 1 ) uuid = summons[0].uuid;
+      else if ( summons.length === 1 ) summonsData = summons[0];
       else {
-        try { uuid = await SummonsItem.promptSummonsType(summons); }
+        try { summonsData = await SummonsItem.promptSummonsType(summons); }
         catch(err) { return; }
       }
     }
 
     // Get copy of roll data & retrieve actor clone
-    const actor = await fromUuid(uuid);
+    const actor = await fromUuid(summonsData.uuid);
     if ( !actor ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoActor"));
-    const protoData = await actor.getTokenDocument();
+    let protoData = await actor.getTokenDocument();
 
     // Prepare actor data changes
     const updates = SummonsActor.getChanges.bind(protoData.actor)(item);
 
     // Figure out where to place the summons
     item.parent?.sheet.minimize();
-    const templateData = await warpgate.crosshairs.show({
-      size: protoData.width, icon: protoData.texture.src, name: protoData.name
-    });
+
+    for ( let iteration = 0; iteration < (summonsData.count || 1); iteration++ ) {
+      const templateData = await warpgate.crosshairs.show({
+        size: protoData.width, icon: protoData.texture.src, name: protoData.name
+      });
+
+      // Ensure the template was completed and merge in any rotation changes
+      await warpgate.event.notify(warpgate.EVENT.PLACEMENT, {templateData, tokenData: protoData.toObject()});
+      if ( templateData.cancelled ) break;
+      updates.token = { rotation: templateData.direction };
+
+      warpgate.spawnAt(
+        { x: templateData.x, y: templateData.y },
+        protoData, updates, undefined,
+        { comparisonKeys: { Item: "_id" } }
+      );
+
+      if ( summonsData.count > 1 ) protoData = await actor.getTokenDocument();
+    }
+
     item.parent?.sheet.maximize();
-
-    // Ensure the template was completed and merge in any rotation changes
-    await warpgate.event.notify(warpgate.EVENT.PLACEMENT, {templateData, tokenData: protoData.toObject()});
-    if ( templateData.cancelled ) return;
-    updates.token = { rotation: templateData.direction };
-
-    return warpgate.spawnAt(
-      { x: templateData.x, y: templateData.y },
-      protoData, updates, undefined,
-      { comparisonKeys: { Item: "_id" } }
-    );
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -75,7 +81,8 @@ export class SummonsItem {
             label: game.i18n.localize("ArbronSummoner.ChatCard.SummonButton"),
             callback: html => {
               const input = html.querySelector("select[name='summonsType']");
-              if ( input?.value ) resolve(input.value);
+              const summonsData = summons.find(s => s.uuid === input?.value);
+              if ( summonsData ) resolve(summonsData);
               else reject(null);
             }
           }
@@ -128,6 +135,7 @@ export class SummonsItem {
     const summons = await Promise.all(stored.map(async function(s) {
       return {
         name: s.name,
+        count: s.count,
         uuid: s.uuid,
         item: await fromUuid(s.uuid),
         link: dnd5e.utils.linkForUuid(s.uuid)
@@ -176,7 +184,7 @@ export class SummonsItem {
 
     const summons = foundry.utils.deepClone(this.item.getFlag("arbron-summoner", "summons") ?? []);
     const existingUuids = new Set(summons.map(s => s.uuid));
-    actors = actors.map(a => ({ name: a.name, uuid: a.uuid })).filter(a => !existingUuids.has(a.uuid));
+    actors = actors.map(a => ({ name: a.name, count: 1, uuid: a.uuid })).filter(a => !existingUuids.has(a.uuid));
     if ( !actors.length ) return;
 
     summons.push(...actors);
@@ -311,7 +319,8 @@ export class SummonsItem {
     if ( !SummonsItem.getSummonsConfiguration(item)?.length ) return;
 
     // Trigger the summons
-    if ( config.createSummons && config.summonsType ) SummonsItem.summon(item, config.summonsType);
+    const summonsData = summons.find(s => s.uuid === config.summonsType);
+    if ( config.createSummons && summonsData ) SummonsItem.summon(item, summonsData);
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -383,10 +392,13 @@ export class SummonsItem {
     if ( !storedData && !Number.isNaN(upcastLevel) && upcastLevel !== item.system.level ) {
       item = item.clone({"system.level": upcastLevel}, {keepId: true});
       item.prepareData();
+      item.prepareFinalAttributes();
     }
 
+    const summons = item.getFlag("arbron-summoner", "summons") ?? [];
     const uuid = message.getFlag("arbron-summoner", "summonsType") ?? button.dataset.uuid;
-    SummonsItem.summon(item, uuid);
+    const summonsData = summons.find(s => s.uuid === uuid);
+    SummonsItem.summon(item, summonsData);
   }
 
 }
