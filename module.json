@@ -71,6 +71,11 @@
       "lang": "fi",
       "name": "Suomi",
       "path": "lang/fi.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json"
     }
   ],
   "packs": [
