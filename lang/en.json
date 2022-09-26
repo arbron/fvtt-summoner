@@ -14,6 +14,7 @@
   "ArbronSummoner.Config.AddChange": "Add Change",
   "ArbronSummoner.Config.ButtonAction": "Configure Summons",
   "ArbronSummoner.Config.FormulaAC": "AC Formula",
+  "ArbronSummoner.Config.FormulaACHint": "Actor's AC calculation must be set to “Natural Armor” or “Flat” to use this formula.",
   "ArbronSummoner.Config.FormulaHP": "HP Formula",
   "ArbronSummoner.Config.GeneralHeader": "General Changes",
   "ArbronSummoner.Config.MatchProficiency": "Match Proficiency",

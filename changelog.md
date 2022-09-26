@@ -1,7 +1,9 @@
 # Changelog
 
 ## [1.0.5]
+- Add [German] translation
 - Fix issue with summoned type not getting stored in chat message [[#12]]
+- Clarify how armor class modifications are handled [[#14]]
 
 ## [1.0.4]
 - Add summon configuration button to TidySheet [[#8]]
@@ -38,7 +40,9 @@
 [#5]: https://github.com/arbron/fvtt-summoner/issues/5
 [#8]: https://github.com/arbron/fvtt-summoner/issues/8
 [#12]: https://github.com/arbron/fvtt-summoner/issues/12
+[#14]: https://github.com/arbron/fvtt-summoner/issues/14
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/
+[German]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/de/
 [Romanian]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/ro/
