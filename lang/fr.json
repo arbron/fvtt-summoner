@@ -15,10 +15,11 @@
   "ArbronSummoner.Config.MatchSaveDCs": "Accorder les DC de Sauvegarde",
   "ArbronSummoner.Config.MatchToHit": "Accorder le Bonus d'Attaque",
   "ArbronSummoner.Config.Title": "Configuration de l'Invocation",
-  "ArbronSummoner.Error.NoWarpGate": "Invocation requière que le module Warp Gate soit installé et activé.",
-  "ArbronSummoner.Error.NoActor": "l'Acteur d'origine n'est pas disponible pour Invoquer.",
+  "ArbronSummoner.Error.NoWarpGate": "l'invocation requière que le module Warp Gate soit installé et activé.",
+  "ArbronSummoner.Error.NoActor": "l'Acteur d'origine n'est pas disponible pour l'invocation.",
   "ArbronSummoner.Config.ButtonAction": "Configurer les Invocations",
   "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Choisir le Type d'Invocation",
   "ArbronSummoner.Tooltip.DisplayName": "Nom Affiché",
-  "ArbronSummoner.Tooltip.RemoveSummons": "Retirer les Invocations"
+  "ArbronSummoner.Tooltip.RemoveSummons": "Retirer les Invocations",
+  "ArbronSummoner.Config.FormulaACHint": "Le calcul de la CA de l'acteur doit être réglé sur \"Armure naturelle\" ou \"Flat\" pour utiliser cette formule."
 }
