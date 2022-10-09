@@ -64,7 +64,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>Next, click the <em>Summons Configuration</em> button that appears on the bottom of the default NPC sheet or within the <em>Special Traits</em> menu on other sheets to being customizing the configuration.</p><img src=\"modules/arbron-summoner/images/actor-configuration.webp\" style=\"max-width:600px\" /><ul><li><p><strong>Match Proficiency</strong>: Will modify the summoned creature's proficiency to equal that of the summoner.</p></li><li><p><strong>Match To Hit</strong>: Will modify the summoned creatures attacks to match the summoner's to hit value as best as possible.</p></li><li><p><strong>Match Save DCs</strong>: Will modify any feature with a save DC to use the save DC for the summoning spell or feature.</p></li><li><p><strong>AC Formula</strong> &amp; <strong>HP Formula</strong>: Will adjust the summoned actor's values to match the formula entered. This formula takes roll data from the summoning feature, so <code>@item.level</code> will be the level of the spell cast, and <code>@details.level</code> will be the level of the caster.</p></li><li><p><strong>Actor Changes</strong>: Allows for additional active effect-like modifications to the summoned actor.</p></li></ul><img src=\"modules/arbron-summoner/images/actor-changes.webp\" style=\"max-width:600px\" /><p>Once this configuration is complete, it is time to perform any necessary duplication to your actor to create variants. I also recommend placing these finished actors in a compendium before configuring your features.</p>",
+        "content": "<p>Next, click the <em>Summons Configuration</em> button that appears on the bottom of the default NPC sheet or within the <em>Special Traits</em> menu on other sheets to being customizing the configuration.</p><img src=\"modules/arbron-summoner/images/actor-configuration.webp\" style=\"max-width:600px\" /><ul><li><p><strong>Match Proficiency</strong>: Will modify the summoned creature's proficiency to equal that of the summoner.</p></li><li><p><strong>Match To Hit</strong>: Will modify the summoned creatures attacks to match the summoner's to hit value as best as possible.</p></li><li><p><strong>Match Save DCs</strong>: Will modify any feature with a save DC to use the save DC for the summoning spell or feature.</p></li><li><p><strong>AC Formula</strong> &amp; <strong>HP Formula</strong>: Will adjust the summoned actor's values to match the formula entered. This formula takes roll data from the summoning feature, so <code>@item.level</code> will be the level of the spell cast, and <code>@details.level</code> will be the level of the caster.</p></li><li><p><strong>Actor Changes</strong>: Allows for additional active effect-like modifications to the summoned actor.</p></li></ul><img src=\"modules/arbron-summoner/images/actor-changes.webp\" style=\"max-width:600px\" /><p>Once this configuration is complete, it is time to perform any necessary duplication to your actor to create variants.</p>",
         "markdown": ""
       },
       "video": {
@@ -146,10 +146,10 @@
   "flags": {},
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "2.0.2",
-    "coreVersion": "10.285",
+    "systemVersion": "2.0.3",
+    "coreVersion": "10.287",
     "createdTime": 1662845277195,
-    "modifiedTime": 1662846396277,
+    "modifiedTime": 1665337947110,
     "lastModifiedBy": "fG5sLzl9ydTwlYGM"
   },
   "folder": null,

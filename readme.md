@@ -44,7 +44,7 @@ Next, click the `"Summons Configuration"` button that appears on the bottom of t
   `system.attributes.movement.fly` and a value of `@details.level * 5`"
   src="images/actor-changes.webp" width="750">
 
-Once this configuration is complete, it is time to perform any necessary duplication to your actor to create variants. I also recommend placing these finished actors in a compendium before configuring your features.
+Once this configuration is complete, it is time to perform any necessary duplication to your actor to create variants.
 
 
 ### Step 3: Configure Summoning Feature or Spell
