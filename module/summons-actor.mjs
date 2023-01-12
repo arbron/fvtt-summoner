@@ -161,7 +161,7 @@ export class SummonsActor {
       // Match item to hit to match summoner
       if ( config.matchToHit && item.hasAttack ) {
         const toHit = SummonsActor._determineToHit(item);
-        itemUpdates["system.attackBonus"] = toHitTarget - toHit;
+        itemUpdates["system.attackBonus"] = `${toHitTarget - toHit}`;
       }
 
       // Match item save DC to match summoner
