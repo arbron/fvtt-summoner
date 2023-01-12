@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.6]
+- Fix bug introduced by DnD 5e 2.1.0 [[#22]]
+
 ## [1.0.5]
 - Add [German] translation
 - Fix issue with summoned type not getting stored in chat message [[#12]]
@@ -33,6 +36,7 @@
 [1.0.3]: https://github.com/arbron/fvtt-summoner/compare/1.0.2...1.0.3
 [1.0.4]: https://github.com/arbron/fvtt-summoner/compare/1.0.3...1.0.4
 [1.0.5]: https://github.com/arbron/fvtt-summoner/compare/1.0.4...1.0.5
+[1.0.6]: https://github.com/arbron/fvtt-summoner/compare/1.0.5...1.0.6
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
@@ -41,6 +45,7 @@
 [#8]: https://github.com/arbron/fvtt-summoner/issues/8
 [#12]: https://github.com/arbron/fvtt-summoner/issues/12
 [#14]: https://github.com/arbron/fvtt-summoner/issues/14
+[#22]: https://github.com/arbron/fvtt-summoner/pull/22
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/
