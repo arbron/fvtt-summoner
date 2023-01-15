@@ -4,6 +4,7 @@
 - Add ability to summon multiple tokens at once [[#10]]
 - Add hooks to summoning process [[#24]]
 - Fix bug with `@summoner.prof` not being proper `Proficiency` object [[#18]]
+- Fix but with multiple Summons Configuration windows opening [[#19]] [[#26]]
 
 ## [1.0.6]
 - Fix bug introduced by DnD 5e 2.1.0 [[#22]]
@@ -53,8 +54,10 @@
 [#12]: https://github.com/arbron/fvtt-summoner/issues/12
 [#14]: https://github.com/arbron/fvtt-summoner/issues/14
 [#18]: https://github.com/arbron/fvtt-summoner/issues/18
+[#19]: https://github.com/arbron/fvtt-summoner/issues/19
 [#22]: https://github.com/arbron/fvtt-summoner/pull/22
 [#24]: https://github.com/arbron/fvtt-summoner/issues/24
+[#26]: https://github.com/arbron/fvtt-summoner/issues/26
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/
