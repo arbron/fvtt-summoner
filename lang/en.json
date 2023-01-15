@@ -25,6 +25,7 @@
   "ArbronSummoner.Error.NoActor": "Original actor could not be found to summon.",
   "ArbronSummoner.Error.NoWarpGate": "Summoning requires the Warp Gate module be installed and active.",
 
+  "ArbronSummoner.Tooltip.Count": "Number to Summon",
   "ArbronSummoner.Tooltip.DisplayName": "Display Name",
   "ArbronSummoner.Tooltip.RemoveSummons": "Remove Summons"
 }
