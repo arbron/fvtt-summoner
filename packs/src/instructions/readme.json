@@ -94,7 +94,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>Next, it is time to modify your feature or spell to handle the summoning. Open up the details page on your item and change the <code>\"Action Type\"</code> to the new <code>\"Summoning\"</code> type. This will display a new section near the bottom with a drop area. Drop the actor or actors you prepared above into this area to indicate they can be summoned.</p><img src=\"modules/arbron-summoner/images/feature-configuration.webp\" style=\"max-width:600px\" /><p>The name field next to the item will change the name as displayed in the summoning window, but will not change the name of the summoned actor.</p>",
+        "content": "<p>Next, it is time to modify your feature or spell to handle the summoning. Open up the details page on your item and change the <code>\"Action Type\"</code> to the new <code>\"Summoning\"</code> type. This will display a new section near the bottom with a drop area. Drop the actor or actors you prepared above into this area to indicate they can be summoned.</p><img src=\"modules/arbron-summoner/images/feature-configuration.webp\" style=\"max-width:600px\" /><p>The count field can be used to summon more than one actor at a time. This is useful for a spell like <em>Dancing Lights</em> which allows the caster to summon 4 smaller globes with a single casting.</p><p>The name field next to the item will change the name as displayed in the summoning window, but will not change the name of the summoned actor.</p>",
         "markdown": ""
       },
       "video": {
@@ -146,10 +146,10 @@
   "flags": {},
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "2.0.3",
-    "coreVersion": "10.287",
+    "systemVersion": "2.1.2",
+    "coreVersion": "10.291",
     "createdTime": 1662845277195,
-    "modifiedTime": 1665337947110,
+    "modifiedTime": 1673815044138,
     "lastModifiedBy": "fG5sLzl9ydTwlYGM"
   },
   "folder": null,

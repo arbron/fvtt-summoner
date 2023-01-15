@@ -4,7 +4,7 @@
 - Add ability to summon multiple tokens at once [[#10]]
 - Add hooks to summoning process [[#24]]
 - Fix bug with `@summoner.prof` not being proper `Proficiency` object [[#18]]
-- Fix but with multiple Summons Configuration windows opening [[#19]] [[#26]]
+- Fix bug with multiple Summons Configuration windows opening [[#19]] [[#26]]
 
 ## [1.0.6]
 - Fix bug introduced by DnD 5e 2.1.0 [[#22]]
