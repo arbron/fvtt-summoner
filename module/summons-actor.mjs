@@ -50,8 +50,6 @@ export class SummonsActor {
       case "ActorSheet5eNPC":
       case "ActorSheet5eVehicle":
         traits.insertAdjacentElement("beforeend", SummonsActor.summonsConfigButton());
-        html[0].querySelector("[data-action='summons-config']")
-          .addEventListener("click", SummonsActor.onSummonsConfigClicked.bind(application));
         break;
       case "Tidy5eNPC":
       case "Tidy5eVehicle":
@@ -65,7 +63,7 @@ export class SummonsActor {
         return;
     }
 
-    html[0].querySelector("[data-action='summons-config']")
+    html[0].querySelector("[data-action='summons-config']")?
       .addEventListener("click", SummonsActor.onSummonsConfigClicked.bind(application));
   }
 
