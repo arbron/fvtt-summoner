@@ -1,97 +1,10 @@
 import { debugLog } from "./logging.mjs";
+import summon from "./summon.mjs";
 import { SummonsActor } from "./summons-actor.mjs";
+import { buildSelectSummonsDropdown } from "./summons-type-prompt.mjs";
 
 
 export class SummonsItem {
-
-  /**
-   * Perform the summons of the specified type.
-   * @param {Item5e} item           The item performing the summoning.
-   * @param {string} [summonsData]  Data of the actor to summon. If blank, then the type selection UI will be shown.
-   */
-  static async summon(item, summonsData) {
-    // Ensure Warp Gate is installed and enabled, otherwise throw an error
-    if ( !globalThis.warpgate ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoWarpGate"));
-
-    // If summons data is blank, present selection UI for this item
-    if ( !summonsData ) {
-      const summons = item.getFlag("arbron-summoner", "summons") ?? [];
-      if ( !summons.length ) return;
-      else if ( summons.length === 1 ) summonsData = summons[0];
-      else {
-        try { summonsData = await SummonsItem.promptSummonsType(summons); }
-        catch(err) { return; }
-      }
-    }
-
-    // Get copy of roll data & retrieve actor clone
-    const actor = await fromUuid(summonsData.uuid);
-    if ( !actor ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoActor"));
-    let protoData = await actor.getTokenDocument();
-
-    // Prepare actor data changes
-    const updates = SummonsActor.getChanges.bind(protoData.actor)(item);
-
-    // Figure out where to place the summons
-    item.parent?.sheet.minimize();
-
-    for ( let iteration = 0; iteration < (summonsData.count || 1); iteration++ ) {
-      const templateData = await warpgate.crosshairs.show({
-        size: protoData.width, icon: protoData.texture.src, name: protoData.name
-      });
-
-      // Ensure the template was completed and merge in any rotation changes
-      await warpgate.event.notify(warpgate.EVENT.PLACEMENT, {templateData, tokenData: protoData.toObject()});
-      if ( templateData.cancelled ) break;
-      updates.token = { rotation: templateData.direction };
-
-      warpgate.spawnAt(
-        { x: templateData.x, y: templateData.y },
-        protoData, updates, undefined,
-        { comparisonKeys: { Item: "_id" } }
-      );
-
-      if ( summonsData.count > 1 ) protoData = await actor.getTokenDocument();
-    }
-
-    item.parent?.sheet.maximize();
-  }
-
-  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
-
-  /**
-   * Present the summons type selection prompt and await the result.
-   * @param {object[]} summons   Summons type configuration.
-   * @returns {Promise<string>}  Resolves to the selected UUID or rejects if no UUID selected.
-   */
-  static async promptSummonsType(summons) {
-    const selectSummons = SummonsItem.selectSummonsDropdown(summons);
-    return new Promise((resolve, reject) => {
-      const dialog = new Dialog({
-        title: game.i18n.localize("ArbronSummoner.AbilityUse.SelectSummonsTypeHeader"),
-        content: `<form>${selectSummons.outerHTML}<br></form>`,
-        buttons: {
-          cancel: {
-            icon: '<i class="fas fa-times"></i>',
-            label: game.i18n.localize("Cancel"),
-            callback: () => reject(null)
-          },
-          summon: {
-            icon: '<i class="fa-solid fa-spaghetti-monster-flying"></i>',
-            label: game.i18n.localize("ArbronSummoner.ChatCard.SummonButton"),
-            callback: html => {
-              const input = html.querySelector("select[name='summonsType']");
-              const summonsData = summons.find(s => s.uuid === input?.value);
-              if ( summonsData ) resolve(summonsData);
-              else reject(null);
-            }
-          }
-        },
-        default: "summon"
-      }, { classes: ["dnd5e", "dialog"], jQuery: false });
-      dialog.render(true);
-    });
-  }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
   /*  Item Sheet                               */
@@ -250,7 +163,7 @@ export class SummonsItem {
     if ( !summons?.length ) return;
 
     // Create the summons dropdown
-    const selectSummons = SummonsItem.selectSummonsDropdown(summons);
+    const selectSummons = buildSelectSummonsDropdown(summons);
 
     // Insert summons dropdown beneath "Cast at Level" if available, otherwise beneath "Notes"
     const castAtLevel = html[0].querySelector("select[name='consumeSpellLevel']")?.closest("div.form-group");
@@ -270,25 +183,6 @@ export class SummonsItem {
 
     // Resize the dialog to fit the new elements
     dialog.setPosition({ height: "auto" });
-  }
-
-  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
-
-  /**
-   * Produce the dropdown for selecting a summons type.
-   * @param {object[]} summons  Summons type configuration.
-   * @returns {Element}
-   */
-  static selectSummonsDropdown(summons) {
-    const summonsTypes = summons.reduce((s, {name, uuid}) => s + `<option value="${uuid}">${name}</option>`, "");
-    return $(`
-      <div class="form-group">
-        <label>${game.i18n.localize("ArbronSummoner.AbilityUse.ChooseSummons")}</label>
-        <div class="form-fields">
-          <select name="summonsType">${summonsTypes}</select>
-        </div>
-      </div>
-    `)[0];
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -320,7 +214,7 @@ export class SummonsItem {
 
     // Trigger the summons
     const summonsData = summons.find(s => s.uuid === config.summonsType);
-    if ( config.createSummons && summonsData ) SummonsItem.summon(item, summonsData);
+    if ( config.createSummons && summonsData ) summon(item, summonsData);
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -398,7 +292,7 @@ export class SummonsItem {
     const summons = item.getFlag("arbron-summoner", "summons") ?? [];
     const uuid = message.getFlag("arbron-summoner", "summonsType") ?? button.dataset.uuid;
     const summonsData = summons.find(s => s.uuid === uuid);
-    SummonsItem.summon(item, summonsData);
+    summon(item, summonsData);
   }
 
 }
