@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.0]
+- Add ability to summon multiple tokens at once [[#10]]
+- Add hooks to summoning process [[#24]]
+
 ## [1.0.6]
 - Fix bug introduced by DnD 5e 2.1.0 [[#22]]
 
@@ -37,15 +41,18 @@
 [1.0.4]: https://github.com/arbron/fvtt-summoner/compare/1.0.3...1.0.4
 [1.0.5]: https://github.com/arbron/fvtt-summoner/compare/1.0.4...1.0.5
 [1.0.6]: https://github.com/arbron/fvtt-summoner/compare/1.0.5...1.0.6
+[1.1.0]: https://github.com/arbron/fvtt-summoner/compare/1.0.6...1.1.0
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
 [#4]: https://github.com/arbron/fvtt-summoner/issues/4
 [#5]: https://github.com/arbron/fvtt-summoner/issues/5
 [#8]: https://github.com/arbron/fvtt-summoner/issues/8
+[#10]: https://github.com/arbron/fvtt-summoner/issues/10
 [#12]: https://github.com/arbron/fvtt-summoner/issues/12
 [#14]: https://github.com/arbron/fvtt-summoner/issues/14
 [#22]: https://github.com/arbron/fvtt-summoner/pull/22
+[#24]: https://github.com/arbron/fvtt-summoner/issues/24
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/
