@@ -215,6 +215,13 @@ export class SummonsActor {
     if ( !summoner?.data ) return rollData;
 
     rollData.summoner = summoner.data;
+    if ( rollData.summoner.prof ) {
+      rollData.summoner.prof = new dnd5e.documents.Proficiency(
+        rollData.summoner.prof._baseProficiency,
+        rollData.summoner.prof.multiplier,
+        rollData.summoner.prof.rounding === "down"
+      );
+    }
     return rollData;
   }
 
