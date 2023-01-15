@@ -40,7 +40,7 @@ export async function promptSummonsType(summons) {
  * @returns {Element}
  */
 export function buildSelectSummonsDropdown(summons) {
-  const summonsTypes = summons.reduce((s, {name, uuid}) => s + `<option value="${uuid}">${name}</option>`, "");
+  const summonsTypes = summons.reduce((s, d) => s + buildSelectSummonsOption(d), "");
   return $(`
     <div class="form-group">
       <label>${game.i18n.localize("ArbronSummoner.AbilityUse.ChooseSummons")}</label>
@@ -49,4 +49,17 @@ export function buildSelectSummonsDropdown(summons) {
       </div>
     </div>
   `)[0];
+}
+
+/* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+/**
+ * Build a single option for the summons list.
+ * @param {SummonsData} [summonsData]  Data of the summons being displayed.
+ * @returns {string}
+ */
+function buildSelectSummonsOption(summonsData) {
+  let name = summonsData.name;
+  if ( (summonsData.count ?? 1) > 1 ) name += ` (${summonsData.count})`;
+  return `<option value="${summonsData.uuid}">${name}</option>`;
 }

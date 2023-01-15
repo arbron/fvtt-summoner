@@ -63,8 +63,8 @@ export class SummonsActor {
         return;
     }
 
-    html[0].querySelector("[data-action='summons-config']")?
-      .addEventListener("click", SummonsActor.onSummonsConfigClicked.bind(application));
+    html[0].querySelector("[data-action='summons-config']")
+      ?.addEventListener("click", SummonsActor.onSummonsConfigClicked.bind(application));
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
