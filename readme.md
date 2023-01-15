@@ -55,6 +55,8 @@ Next, it is time to modify your feature or spell to handle the summoning. Open u
   configured in the summons section"
   src="images/feature-configuration.webp" width="750">
 
+The count field can be used to summon more than one actor at a time. This is useful for a spell like `"Dancing Lights"` which allows the caster to summon 4 smaller globes with a single casting.
+
 The name field next to the item will change the name as displayed in the summoning window, but will not change the name of the summoned actor.
 
 
