@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.1]
+- Fix bug when summoning from sheet [[#27]]
+
 ## [1.1.0]
 - Add ability to summon multiple tokens at once [[#10]]
 - Add hooks to summoning process [[#24]]
@@ -44,6 +47,7 @@
 [1.0.5]: https://github.com/arbron/fvtt-summoner/compare/1.0.4...1.0.5
 [1.0.6]: https://github.com/arbron/fvtt-summoner/compare/1.0.5...1.0.6
 [1.1.0]: https://github.com/arbron/fvtt-summoner/compare/1.0.6...1.1.0
+[1.1.1]: https://github.com/arbron/fvtt-summoner/compare/1.1.0...1.1.1
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
@@ -58,6 +62,7 @@
 [#22]: https://github.com/arbron/fvtt-summoner/pull/22
 [#24]: https://github.com/arbron/fvtt-summoner/issues/24
 [#26]: https://github.com/arbron/fvtt-summoner/issues/26
+[#27]: https://github.com/arbron/fvtt-summoner/issues/27
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/

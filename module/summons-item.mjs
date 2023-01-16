@@ -210,7 +210,8 @@ export class SummonsItem {
    * @param {ItemRollOptions} options       Additional options used for configuring item rolls.
    */
   static useItem(item, config, options) {
-    if ( !SummonsItem.getSummonsConfiguration(item)?.length ) return;
+    const summons = SummonsItem.getSummonsConfiguration(item);
+    if ( !summons?.length ) return;
 
     // Trigger the summons
     const summonsData = summons.find(s => s.uuid === config.summonsType);
