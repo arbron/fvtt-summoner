@@ -21,5 +21,6 @@
   "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Choisir le Type d'Invocation",
   "ArbronSummoner.Tooltip.DisplayName": "Nom Affiché",
   "ArbronSummoner.Tooltip.RemoveSummons": "Retirer les Invocations",
-  "ArbronSummoner.Config.FormulaACHint": "Le calcul de la CA de l'acteur doit être réglé sur \"Armure naturelle\" ou \"Flat\" pour utiliser cette formule."
+  "ArbronSummoner.Config.FormulaACHint": "Le calcul de la CA de l'acteur doit être réglé sur \"Armure naturelle\" ou \"Flat\" pour utiliser cette formule.",
+  "ArbronSummoner.Tooltip.Count": "Nombre à invoquer"
 }
