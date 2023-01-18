@@ -12,8 +12,11 @@ import { promptSummonsType } from "./summons-type-prompt.mjs";
  * Perform the summons of the specified type.
  * @param {Item5e} item                The item performing the summoning.
  * @param {SummonsData} [summonsData]  Data of the actor to summon. If blank, then the type selection UI will be shown.
+ * @param {object} [usage={}]
+ * @param {ItemUseConfiguration} [usage.config]
+ * @param {ItemUseOptions} [usage.options]
  */
-export default async function summon(item, summonsData) {
+export default async function summon(item, summonsData, usage) {
   // Ensure Warp Gate is installed and enabled, otherwise throw an error
   if ( !globalThis.warpgate ) return ui.notifications.error(game.i18n.localize("ArbronSummoner.Error.NoWarpGate"));
 
@@ -44,7 +47,7 @@ export default async function summon(item, summonsData) {
   let protoData = await actor.getTokenDocument();
 
   // Prepare actor data changes
-  const updates = SummonsActor.getChanges.bind(protoData.actor)(item);
+  const updates = SummonsActor.getChanges.bind(protoData.actor)(item, usage);
 
   // Figure out where to place the summons
   item.parent?.sheet.minimize();

@@ -101,21 +101,34 @@ export class SummonsActor {
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
-  
+
   /**
    * Get an updates for the changes needed when summoning.
-   * @param {Item5e} item  The item performing the summoning.
+   * @param {Item5e} item     The item performing the summoning.
+   * @param {object} [usage]  Additional usage information provided by `Item5e#use`.
    */
-  static getChanges(item) {
+  static getChanges(item, usage) {
     const clone = this.clone();
     const config = this.getFlag("arbron-summoner", "config");
     const updates = { actor: {}, embedded: {} };
     const rollData = item.getRollData();
-  
+
     // Store roll data & summoner information in flags
     foundry.utils.setProperty(updates.actor, "flags.arbron-summoner.summoner", { uuid: item.uuid, data: rollData });
 
     if ( !config ) return updates;
+
+    /**
+     * A hook that is called before actor changes are prepared.
+     * @function arbron.preGetSummonsChanges
+     * @memberof hookEvents
+     * @param {Item5e} item     The item that is performing the summoning.
+     * @param {object} updates  Updates that will be done to the actor.
+     * @param {object} [usage]  Additional usage information provided by `Item5e#use`.
+     * @returns {boolean}       Explicitly return `false` to skip the rest of the automatic actor changes.
+     */
+    if ( Hooks.call("arbron.preGetSummonsChanges", item, updates, usage) === false ) return updates;
+
     const toHitTarget = config.matchToHit ? SummonsActor._determineToHit(item) : 0;
 
     // Modify proficiency to match summoner using an active effect
@@ -174,6 +187,16 @@ export class SummonsActor {
         updates.embedded.Item[item.id] = foundry.utils.expandObject(itemUpdates);
       }
     }
+
+    /**
+     * A hook that is called after actor changes have been prepared.
+     * @function arbron.getSummonsChanges
+     * @memberof hookEvents
+     * @param {Item5e} item     The item that is performing the summoning.
+     * @param {object} updates  Updates that will be done to the actor.
+     * @param {object} [usage]  Additional usage information provided by `Item5e#use`.
+     */
+    Hooks.callAll("arbron.getSummonsChanges", item, updates, usage);
 
     return updates;
   }

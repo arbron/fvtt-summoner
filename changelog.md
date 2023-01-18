@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.2]
+- Add `arbron.preGetSummonsChanges` & `arbron.getSummonsChanges` hooks
+- Update [French] translation
+
 ## [1.1.1]
 - Fix bug when summoning from sheet [[#27]]
 
@@ -48,6 +52,7 @@
 [1.0.6]: https://github.com/arbron/fvtt-summoner/compare/1.0.5...1.0.6
 [1.1.0]: https://github.com/arbron/fvtt-summoner/compare/1.0.6...1.1.0
 [1.1.1]: https://github.com/arbron/fvtt-summoner/compare/1.1.0...1.1.1
+[1.1.2]: https://github.com/arbron/fvtt-summoner/compare/1.1.1...1.1.2
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3

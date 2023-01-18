@@ -205,9 +205,9 @@ export class SummonsItem {
 
   /**
    * Summon the monster if `createSummons` is true, otherwise retain the summons type.
-   * @param {Item5e} item                   Item being rolled.
-   * @param {ItemRollConfiguration} config  Configuration data for the roll.
-   * @param {ItemRollOptions} options       Additional options used for configuring item rolls.
+   * @param {Item5e} item                  Item being rolled.
+   * @param {ItemUseConfiguration} config  Configuration data for the roll.
+   * @param {ItemUseOptions} options       Additional options used for configuring item rolls.
    */
   static useItem(item, config, options) {
     const summons = SummonsItem.getSummonsConfiguration(item);
@@ -215,16 +215,16 @@ export class SummonsItem {
 
     // Trigger the summons
     const summonsData = summons.find(s => s.uuid === config.summonsType);
-    if ( config.createSummons && summonsData ) summon(item, summonsData);
+    if ( config.createSummons && summonsData ) summon(item, summonsData, { config, options });
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
 
   /**
    * Add the summons button to chat cards that require it.
-   * @param {Item5e} item              Item for which the chat card is being displayed.
-   * @param {object} chatData          Data used to create the chat message.
-   * @param {ItemRollOptions} options  Options which configure the display of the item chat card.
+   * @param {Item5e} item             Item for which the chat card is being displayed.
+   * @param {object} chatData         Data used to create the chat message.
+   * @param {ItemUseOptions} options  Options which configure the display of the item chat card.
    */
   static preDisplayCard(item, chatData, options) {
     if ( !SummonsItem.getSummonsConfiguration(item)?.length ) return;
