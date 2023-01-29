@@ -1,1 +1,14 @@
-{}
+{
+  "ArbronSummoner.Config.ButtonAction": "Configurar invocaciones",
+  "ArbronSummoner.Summoning": "Invocar",
+  "ArbronSummoner.SummonsHeader": "Invocaciones",
+  "ArbronSummoner.SummonsHint": "Arrastra uno o más actores aquí para configurarlos como invocaciones",
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Elegir tipo de invocación",
+  "ArbronSummoner.AbilityUse.PlaceSummons": "Colocar invocaciones",
+  "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Elegir el tipo de las invocaciones",
+  "ArbronSummoner.ChatCard.SummonButton": "Invocar",
+  "ArbronSummoner.Config.ActorChangesHeader": "Cambios en el actor",
+  "ArbronSummoner.Config.ActorChangesHint": "Utiliza una sintaxis similar a la de Active Effects para modificar los datos del actor invocado. Los datos de la tirada son los del actor que realiza la invocación.",
+  "ArbronSummoner.Config.AddChange": "Agregar cambio",
+  "ArbronSummoner.Config.FormulaAC": "Fórmula de la CA"
+}
