@@ -10,5 +10,16 @@
   "ArbronSummoner.Config.ActorChangesHeader": "Cambios en el actor",
   "ArbronSummoner.Config.ActorChangesHint": "Utiliza una sintaxis similar a la de Active Effects para modificar los datos del actor invocado. Los datos de la tirada son los del actor que realiza la invocación.",
   "ArbronSummoner.Config.AddChange": "Agregar cambio",
-  "ArbronSummoner.Config.FormulaAC": "Fórmula de la CA"
+  "ArbronSummoner.Config.FormulaAC": "Fórmula de la CA",
+  "ArbronSummoner.Config.FormulaHP": "Fórmula de PG",
+  "ArbronSummoner.Config.GeneralHeader": "Cambios Generales",
+  "ArbronSummoner.Config.MatchProficiency": "Igualar Competencia",
+  "ArbronSummoner.Config.MatchSaveDCs": "Igualar CDs de Salvación",
+  "ArbronSummoner.Config.Title": "Configuración de Invocación",
+  "ArbronSummoner.Error.NoWarpGate": "La invocación requiere que el módulo Warp Gate esté instalado y activado.",
+  "ArbronSummoner.Tooltip.Count": "Cantidad a Invocar",
+  "ArbronSummoner.Tooltip.DisplayName": "Nombre Para Mostrar",
+  "ArbronSummoner.Tooltip.RemoveSummons": "Remover Invocaciones",
+  "ArbronSummoner.Config.FormulaACHint": "Los cálculos para la CA del actor deben estar en «Armadura Natural» o «Valor fijo» para utilizar esta fórmula.",
+  "ArbronSummoner.Error.NoActor": "No se pudo encontrar al actor original para invocarlo."
 }
