@@ -2,6 +2,7 @@
 
 ## [1.1.3]
 - Fix bug with summons configuration being saved as object in v11 [[#34]]
+- Add [Spanish] translation
 
 ## [1.1.2]
 - Add `arbron.preGetSummonsChanges` & `arbron.getSummonsChanges` hooks
@@ -78,3 +79,4 @@
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/
 [German]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/de/
 [Romanian]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/ro/
+[Spanish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/es/
