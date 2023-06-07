@@ -44,7 +44,9 @@ export class SummonsItem {
    * @returns {object}
    */
   static async getData() {
-    const stored = this.item.getFlag("arbron-summoner", "summons") ?? [];
+    let stored = this.item.getFlag("arbron-summoner", "summons") ?? [];
+    // Fix for data that was stored incorrectly in v11
+    if ( foundry.utils.getType(stored) === "Object" ) stored = Object.values(stored);
     const summons = await Promise.all(stored.map(async function(s) {
       return {
         name: s.name,
@@ -62,14 +64,14 @@ export class SummonsItem {
   /**
    * Ensure summons data is in the proper array format before being saved.
    * @param {Item5e} item     The Item instance being updated.
-   * @param {object} change   Differential data that will be used to update the item.
+   * @param {object} changes  Differential data that will be used to update the item.
    * @param {object} options  Additional options which modify the update request.
    * @param {string} userId   The ID of the requesting user.
    */
-  static preUpdateItem(item, change, options, userId) {
-    const summons = change.flags?.["arbron-summoner"]?.summons;
+  static preUpdateItem(item, changes, options, userId) {
+    const summons = foundry.utils.getProperty(changes, "flags.arbron-summoner.summons");
     if ( !summons || (summons instanceof Array) ) return;
-    change.flags["arbron-summoner"].summons = Object.values(summons).map(d => d);
+    changes.flags["arbron-summoner"].summons = Object.values(summons);
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -95,7 +97,9 @@ export class SummonsItem {
 
     else return;
 
-    const summons = foundry.utils.deepClone(this.item.getFlag("arbron-summoner", "summons") ?? []);
+    let summons = foundry.utils.deepClone(this.item.getFlag("arbron-summoner", "summons") ?? []);
+    // Fix for data that was stored incorrectly in v11
+    if ( foundry.utils.getType(summons) === "Object" ) summons = Object.values(summons);
     const existingUuids = new Set(summons.map(s => s.uuid));
     actors = actors.map(a => ({ name: a.name, count: 1, uuid: a.uuid })).filter(a => !existingUuids.has(a.uuid));
     if ( !actors.length ) return;
@@ -115,7 +119,9 @@ export class SummonsItem {
     await this._onSubmit(event);
     const section = event.target.closest("li");
     const index = Number(section.dataset.index);
-    const summons = foundry.utils.deepClone(this.item.getFlag("arbron-summoner", "summons") ?? []);
+    let summons = foundry.utils.deepClone(this.item.getFlag("arbron-summoner", "summons") ?? []);
+    // Fix for data that was stored incorrectly in v11
+    if ( foundry.utils.getType(summons) === "Object" ) summons = Object.values(summons);
     summons.splice(index, 1);
     return this.item.setFlag("arbron-summoner", "summons", summons);
   }
@@ -131,7 +137,10 @@ export class SummonsItem {
    */
   static getSummonsConfiguration(item) {
     if ( (item.system.actionType !== "summon") ) return;
-    return item.getFlag("arbron-summoner", "summons");
+    const summons = item.getFlag("arbron-summoner", "summons");
+    // Fix for data that was stored incorrectly in v11
+    if ( foundry.utils.getType(summons) === "Object" ) return Object.values(summons);
+    return summons;
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
@@ -290,7 +299,9 @@ export class SummonsItem {
       item.prepareFinalAttributes();
     }
 
-    const summons = item.getFlag("arbron-summoner", "summons") ?? [];
+    let summons = item.getFlag("arbron-summoner", "summons") ?? [];
+    // Fix for data that was stored incorrectly in v11
+    if ( foundry.utils.getType(summons) === "Object" ) summons = Object.values(summons);
     const uuid = message.getFlag("arbron-summoner", "summonsType") ?? button.dataset.uuid;
     const summonsData = summons.find(s => s.uuid === uuid);
     summon(item, summonsData);

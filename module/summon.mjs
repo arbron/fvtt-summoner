@@ -22,7 +22,9 @@ export default async function summon(item, summonsData, usage) {
 
   // If summons data is blank, present selection UI for this item
   if ( !summonsData ) {
-    const summons = item.getFlag("arbron-summoner", "summons") ?? [];
+    let summons = item.getFlag("arbron-summoner", "summons") ?? [];
+    // Fix for data that was stored incorrectly in v11
+    if ( foundry.utils.getType(summons) === "Object" ) summons = Object.values(summons);
     if ( !summons.length ) return;
     else if ( summons.length === 1 ) summonsData = summons[0];
     else {

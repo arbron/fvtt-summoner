@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.3]
+- Fix bug with summons configuration being saved as object in v11 [[#34]]
+
 ## [1.1.2]
 - Add `arbron.preGetSummonsChanges` & `arbron.getSummonsChanges` hooks
 - Update [French] translation
@@ -53,6 +56,7 @@
 [1.1.0]: https://github.com/arbron/fvtt-summoner/compare/1.0.6...1.1.0
 [1.1.1]: https://github.com/arbron/fvtt-summoner/compare/1.1.0...1.1.1
 [1.1.2]: https://github.com/arbron/fvtt-summoner/compare/1.1.1...1.1.2
+[1.1.3]: https://github.com/arbron/fvtt-summoner/compare/1.1.2...1.1.3
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
@@ -68,6 +72,7 @@
 [#24]: https://github.com/arbron/fvtt-summoner/issues/24
 [#26]: https://github.com/arbron/fvtt-summoner/issues/26
 [#27]: https://github.com/arbron/fvtt-summoner/issues/27
+[#34]: https://github.com/arbron/fvtt-summoner/issues/34
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/
