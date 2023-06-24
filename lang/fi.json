@@ -20,5 +20,7 @@
   "ArbronSummoner.Config.ButtonAction": "Määritä esiinloihdittavat",
   "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Valitse esiinloihdittavan tyyppi",
   "ArbronSummoner.Tooltip.DisplayName": "Näyttönimi",
-  "ArbronSummoner.Tooltip.RemoveSummons": "Poista esiinloihdittava"
+  "ArbronSummoner.Tooltip.RemoveSummons": "Poista esiinloihdittava",
+  "ArbronSummoner.Tooltip.Count": "Esiinloihdittavien määrä",
+  "ArbronSummoner.Config.FormulaACHint": "Hahmon PL-laskennan tulee olla \"Natural Armor\" tai \"Flat\", jotta tätä kaavaa voidaan käyttää."
 }
