@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.4]
+- Fix bug with summoning while armor or shield is equipped [[#36]]
+
 ## [1.1.3]
 - Fix bug with summons configuration being saved as object in v11 [[#34]]
 - Add [Spanish] translation
@@ -58,6 +61,7 @@
 [1.1.1]: https://github.com/arbron/fvtt-summoner/compare/1.1.0...1.1.1
 [1.1.2]: https://github.com/arbron/fvtt-summoner/compare/1.1.1...1.1.2
 [1.1.3]: https://github.com/arbron/fvtt-summoner/compare/1.1.2...1.1.3
+[1.1.4]: https://github.com/arbron/fvtt-summoner/compare/1.1.3...1.1.4
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
@@ -74,6 +78,7 @@
 [#26]: https://github.com/arbron/fvtt-summoner/issues/26
 [#27]: https://github.com/arbron/fvtt-summoner/issues/27
 [#34]: https://github.com/arbron/fvtt-summoner/issues/34
+[#36]: https://github.com/arbron/fvtt-summoner/issues/36
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/

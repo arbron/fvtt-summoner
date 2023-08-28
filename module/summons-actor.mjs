@@ -111,7 +111,7 @@ export class SummonsActor {
     const clone = this.clone();
     const config = this.getFlag("arbron-summoner", "config");
     const updates = { actor: {}, embedded: {} };
-    const rollData = item.getRollData();
+    const rollData = SummonsActor._cleanRollData(item.getRollData());
 
     // Store roll data & summoner information in flags
     foundry.utils.setProperty(updates.actor, "flags.arbron-summoner.summoner", { uuid: item.uuid, data: rollData });
@@ -143,7 +143,9 @@ export class SummonsActor {
         icon: "icons/skills/targeting/crosshair-bars-yellow.webp",
         label: game.i18n.localize("DND5E.Proficiency")
       }, { parent: this });
-      updates.embedded.ActiveEffect = { [proficiencyEffect.label]: proficiencyEffect.toObject() };
+      updates.embedded.ActiveEffect = {
+        [proficiencyEffect[game.release.generation > 10 ? "name" : "label"]]: proficiencyEffect.toObject()
+      };
       clone.updateSource({ effects: [proficiencyEffect.toObject()] });
     }
 
@@ -199,6 +201,26 @@ export class SummonsActor {
     Hooks.callAll("arbron.getSummonsChanges", item, updates, usage);
 
     return updates;
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
+   * Remove parts of roll data that cannot be properly saved.
+   * @param {object}
+   * @returns {object}
+   */
+  static _cleanRollData(rollData) {
+    for ( const [key, value] of Object.entries(rollData) ) {
+      if ( value instanceof Item ) {
+        delete rollData[key];
+        continue;
+      }
+      const type = foundry.utils.getType(value);
+      console.log(key, value);
+      if ( type === "Object" ) rollData[key] = SummonsActor._cleanRollData(value);
+    }
+    return rollData;
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
