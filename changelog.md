@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.5]
+- Remove logging code
+
 ## [1.1.4]
 - Fix bug with summoning while armor or shield is equipped [[#36]]
 

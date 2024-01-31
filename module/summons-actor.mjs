@@ -217,7 +217,6 @@ export class SummonsActor {
         continue;
       }
       const type = foundry.utils.getType(value);
-      console.log(key, value);
       if ( type === "Object" ) rollData[key] = SummonsActor._cleanRollData(value);
     }
     return rollData;

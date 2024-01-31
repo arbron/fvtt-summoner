@@ -18,7 +18,7 @@
   "readme": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/readme.md",
   "changelog": "https://raw.githubusercontent.com/arbron/fvtt-summoner/main/changelog.md",
   "bugs": "https://github.com/arbron/fvtt-summoner/issues",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "compatibility": {
     "minimum": "10.274",
     "verified": "11"
@@ -30,7 +30,7 @@
         "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
         "compatibility": {
           "minimum": "2.0.0",
-          "verified": "2.2"
+          "verified": "3.0"
         }
       }
     ],
