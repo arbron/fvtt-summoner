@@ -21,10 +21,36 @@ Hooks.once("setup", function() {
 Hooks.on("renderActorSheet5eNPC", SummonsActor.renderActorSheet);
 Hooks.on("renderActorSheet5eVehicle", SummonsActor.renderActorSheet);
 Hooks.on("renderActorSheetFlags", SummonsActor.renderActorSheetFlags);
+Hooks.on("tidy5e-sheet.ready", (api) => {
+  // Add traits section that show on expanded only
+});
 
 // Item Configuration Hooks
 Hooks.on("renderItemSheet5e", SummonsItem.renderItemSheet);
 Hooks.on("preUpdateItem", SummonsItem.preUpdateItem);
+Hooks.on("tidy5e-sheet.ready", (api) => {
+  api.registerItemContent(
+    new api.models.HandlebarsContent({
+      path: "modules/arbron-summoner/templates/summons-section.hbs",
+      injectParams: {
+        selector: `[data-form-group-for="system.chatFlavor"]`,
+        position: "beforebegin",
+      },
+      enabled(data) {
+        return data.item.system.actionType === "summon";
+      },
+      async getData(data) {
+        return await SummonsItem.getData.bind(data.item.sheet)();
+      },
+      onRender({ app, element }) {
+        const summoningArea = element.querySelector(".arbron-summons-area");
+        if (summoningArea) {
+          SummonsItem.activateListeners(summoningArea, app);
+        }
+      },
+    })
+  );
+});
 
 // Item Rolling & Chat Message Hooks
 Hooks.on("dnd5e.preUseItem", SummonsItem.preUseItem);
