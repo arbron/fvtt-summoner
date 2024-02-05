@@ -34,6 +34,13 @@ export class SummonsItem {
     sheet.setPosition({ height: "auto" });
   }
 
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
+   * Enable listeners for item drop & delete controls.
+   * @param {HTMLElement} rendered  Rendered HTML content of the summoning area.
+   * @param {ItemSheet} sheet       Sheet into which the control is being inserted.
+   */
   static activateListeners(rendered, sheet) {
     rendered.querySelectorAll(".arbron-summons-delete").forEach(a => {
       a.addEventListener("click", SummonsItem.onDeleteSummons.bind(sheet));

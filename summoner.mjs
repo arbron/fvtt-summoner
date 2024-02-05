@@ -21,11 +21,11 @@ Hooks.once("setup", function() {
 Hooks.on("renderActorSheet5eNPC", SummonsActor.renderActorSheet);
 Hooks.on("renderActorSheet5eVehicle", SummonsActor.renderActorSheet);
 Hooks.on("renderActorSheetFlags", SummonsActor.renderActorSheetFlags);
-Hooks.on("tidy5e-sheet.ready", (api) => {
+Hooks.on("tidy5e-sheet.ready", api => {
   api.config.actorTraits.registerActorTrait({
     title: game.i18n.localize("ArbronSummoner.Config.Title"),
     iconClass: "fa-solid fa-spaghetti-monster-flying",
-    enabled: (params) => ["npc", "vehicle"].includes(params.context.actor.type),
+    enabled: params => ["npc", "vehicle"].includes(params.context.actor.type),
     openConfiguration(params) {
       SummonsActor.onSummonsConfigClicked.bind(params.app)(params.event);
     },
