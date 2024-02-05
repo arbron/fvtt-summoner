@@ -23,18 +23,29 @@ export class SummonsItem {
     const rendered = $(await renderTemplate("modules/arbron-summoner/templates/summons-section.hbs", summonsData))[0];
 
     // Insert summons section before chat flavor
-    const insertPoint = html[0].querySelector("input[name='system.chatFlavor']").closest("div.form-group");
+    const insertPoint = html[0].querySelector("input[name='system.chatFlavor']")?.closest("div.form-group");
     if ( !insertPoint ) return debugLog("Failed to insert summons template into item");
     insertPoint.insertAdjacentElement("beforebegin", rendered);
 
     // Attach listeners to new element
+    SummonsItem.activateListeners(rendered, sheet);
+
+    // Resize the dialog to fit the new elements
+    sheet.setPosition({ height: "auto" });
+  }
+
+  /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
+
+  /**
+   * Enable listeners for item drop & delete controls.
+   * @param {HTMLElement} rendered  Rendered HTML content of the summoning area.
+   * @param {ItemSheet} sheet       Sheet into which the control is being inserted.
+   */
+  static activateListeners(rendered, sheet) {
     rendered.querySelectorAll(".arbron-summons-delete").forEach(a => {
       a.addEventListener("click", SummonsItem.onDeleteSummons.bind(sheet));
     });
     new DragDrop({ callbacks: { drop: SummonsItem.onDrop.bind(sheet) } }).bind(rendered);
-
-    // Resize the dialog to fit the new elements
-    sheet.setPosition({ height: "auto" });
   }
 
   /* ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~ */
