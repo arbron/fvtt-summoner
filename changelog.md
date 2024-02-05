@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.6]
+- Add integration with new version of Tidy 5e Sheets [[#44]]
+
 ## [1.1.5]
 - Remove logging code
 

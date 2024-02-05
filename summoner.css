@@ -75,3 +75,46 @@
   display: inline-block;
   margin-left: 4px;
 }
+
+.tidy5e-kgar.sheet.item .arbron-summons-area {
+  margin-block-end: 4px;
+
+  h4 {
+    margin: .5rem .25rem .25rem .375rem;
+    color: var(--t5ek-primary-font-color);
+    font-family: var(--t5ek-title-font-family);
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  ol {
+    padding: .1875rem;
+    background: var(--t5ek-faintest-color);
+    border-radius: .3125rem;
+  }
+
+  li {
+    align-items: center;
+  }
+
+  input {
+    height: 1.25rem;
+    font-size: .8125rem;
+    background: var(--t5ek-item-input-background);
+
+    &:hover, &:focus {
+      background: var(--t5ek-item-input-hover-background);
+    }
+  }
+
+  .arbron-summons-actor-link {
+    padding-block-start: 1.5px;
+    font-size: .75rem;
+  }
+
+  .arbron-summons-delete {
+    width: unset;
+    flex: 0 0;
+    padding-inline: .5rem;
+  }
+}
