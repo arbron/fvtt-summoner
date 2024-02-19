@@ -1,0 +1,31 @@
+{
+  "ArbronSummoner.Summoning": "Invocação",
+  "ArbronSummoner.SummonsHeader": "Invocações",
+  "ArbronSummoner.SummonsHint": "Solte aqui um ou mais atores para configurar invocações",
+
+  "ArbronSummoner.AbilityUse.ChooseSummons": "Escolha o Tipo para Invocar",
+  "ArbronSummoner.AbilityUse.PlaceSummons": "Posicionar Invocação",
+  "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Escolha os Tipos de Invocações",
+
+  "ArbronSummoner.ChatCard.SummonButton": "Invocar",
+
+  "ArbronSummoner.Config.ActorChangesHeader": "Mudanças do Ator",
+  "ArbronSummoner.Config.ActorChangesHint": "Use uma syntax similar a dos Efeitos Ativos para modificar informações no ator invocado. A informação disponível são as do ator invocador.",
+  "ArbronSummoner.Config.AddChange": "Adicionar Mudança",
+  "ArbronSummoner.Config.ButtonAction": "Configurar Invocações",
+  "ArbronSummoner.Config.FormulaAC": "Fórmula de CA",
+  "ArbronSummoner.Config.FormulaACHint": "O cálculo de Ca do ator deve ser configurada para “Armadura Natural” or “Fixo” para usar esta fórmula.",
+  "ArbronSummoner.Config.FormulaHP": "Fórmula de HP",
+  "ArbronSummoner.Config.GeneralHeader": "Mudanças Gerais",
+  "ArbronSummoner.Config.MatchProficiency": "Mesma Proficiência",
+  "ArbronSummoner.Config.MatchSaveDCs": "Mesma CD de Salvaguardas",
+  "ArbronSummoner.Config.MatchToHit": "Mesmo Acerto",
+  "ArbronSummoner.Config.Title": "Configuração de Invocação",
+
+  "ArbronSummoner.Error.NoActor": "O ator original não pôde ser encontrado para ser invocado.",
+  "ArbronSummoner.Error.NoWarpGate": "Invocações requerem que o módulo Warp Gate esteja instalado e ativo.",
+
+  "ArbronSummoner.Tooltip.Count": "Quantidade para Invocar",
+  "ArbronSummoner.Tooltip.DisplayName": "Exibir Nome",
+  "ArbronSummoner.Tooltip.RemoveSummons": "Remover Invocações"
+}
