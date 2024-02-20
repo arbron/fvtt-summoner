@@ -1,8 +1,8 @@
 {
-  "ArbronSummoner.SummonsHeader": "Beschwört",
+  "ArbronSummoner.SummonsHeader": "Beschwörungen",
   "ArbronSummoner.AbilityUse.ChooseSummons": "Typ zum Beschwören wählen",
   "ArbronSummoner.AbilityUse.PlaceSummons": "Beschwörung platzieren",
-  "ArbronSummoner.ChatCard.SummonButton": "Beschwört",
+  "ArbronSummoner.ChatCard.SummonButton": "Beschwören",
   "ArbronSummoner.Config.FormulaAC": "AC-Formel",
   "ArbronSummoner.Config.FormulaHP": "HP-Formel",
   "ArbronSummoner.Config.GeneralHeader": "Allgemeine Änderungen",
@@ -11,7 +11,7 @@
   "ArbronSummoner.Config.Title": "Beschwörungskonfiguration",
   "ArbronSummoner.Tooltip.DisplayName": "Name anzeigen",
   "ArbronSummoner.Tooltip.RemoveSummons": "Beschwörungen entfernen",
-  "ArbronSummoner.Summoning": "Beschwören",
+  "ArbronSummoner.Summoning": "Beschwörungen",
   "ArbronSummoner.SummonsHint": "Legen Sie hier einen oder mehrere Akteure ab, um Beschwörungen zu konfigurieren",
   "ArbronSummoner.AbilityUse.SelectSummonsTypeHeader": "Beschörungsart auswählen",
   "ArbronSummoner.Config.ActorChangesHeader": "Akteurswechsel",
@@ -20,5 +20,7 @@
   "ArbronSummoner.Config.ButtonAction": "Beschwörungen konfigurieren",
   "ArbronSummoner.Config.MatchSaveDCs": "Übereinstimmungs-Rettungswurf DC",
   "ArbronSummoner.Error.NoActor": "Es konnte kein original Akteur zum beschwören gefunden werden.",
-  "ArbronSummoner.Error.NoWarpGate": "Das Modul Warp Gate muss installiert und aktiv sein."
+  "ArbronSummoner.Error.NoWarpGate": "Das Modul Warp Gate muss installiert und aktiv sein.",
+  "ArbronSummoner.Tooltip.Count": "Anzahl zum Beschwören",
+  "ArbronSummoner.Config.FormulaACHint": "Die AC-Kalkulation muss auf \"Natürliche Rüstung\" oder \"Flat\" gesetzt sein, um diese Formel zu verwenden."
 }
