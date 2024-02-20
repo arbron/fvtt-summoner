@@ -4,4 +4,5 @@
 /*.lock
 node_modules
 
-packs/*.db
+packs/*
+!packs/src

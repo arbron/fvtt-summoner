@@ -81,15 +81,15 @@
 
   h4 {
     margin: .5rem .25rem .25rem .375rem;
-    color: var(--t5ek-primary-font-color);
-    font-family: var(--t5ek-title-font-family);
+    color: var(--t5e-primary-font-color);
+    font-family: var(--t5e-title-font-family);
     font-size: 1.125rem;
     font-weight: 600;
   }
 
   ol {
     padding: .1875rem;
-    background: var(--t5ek-faintest-color);
+    background: var(--t5e-faintest-color);
     border-radius: .3125rem;
   }
 
@@ -100,10 +100,10 @@
   input {
     height: 1.25rem;
     font-size: .8125rem;
-    background: var(--t5ek-item-input-background);
+    background: var(--t5e-item-input-background);
 
     &:hover, &:focus {
-      background: var(--t5ek-item-input-hover-background);
+      background: var(--t5e-item-input-hover-background);
     }
   }
 

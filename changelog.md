@@ -1,7 +1,8 @@
 # Changelog
 
 ## [1.1.6]
-- Add integration with new version of Tidy 5e Sheets [[#44]]
+- Add integration with new version of Tidy 5e Sheets [[#44], [#46]]
+- Add Brazilian Portuguese translation [[#50]]
 
 ## [1.1.5]
 - Remove logging code
@@ -68,6 +69,8 @@
 [1.1.2]: https://github.com/arbron/fvtt-summoner/compare/1.1.1...1.1.2
 [1.1.3]: https://github.com/arbron/fvtt-summoner/compare/1.1.2...1.1.3
 [1.1.4]: https://github.com/arbron/fvtt-summoner/compare/1.1.3...1.1.4
+[1.1.5]: https://github.com/arbron/fvtt-summoner/compare/1.1.4...1.1.5
+[1.1.6]: https://github.com/arbron/fvtt-summoner/compare/1.1.5...1.1.6
 
 [#2]: https://github.com/arbron/fvtt-summoner/issues/2
 [#3]: https://github.com/arbron/fvtt-summoner/issues/3
@@ -85,6 +88,9 @@
 [#27]: https://github.com/arbron/fvtt-summoner/issues/27
 [#34]: https://github.com/arbron/fvtt-summoner/issues/34
 [#36]: https://github.com/arbron/fvtt-summoner/issues/36
+[#44]: https://github.com/arbron/fvtt-summoner/issues/44
+[#46]: https://github.com/arbron/fvtt-summoner/pull/46
+[#50]: https://github.com/arbron/fvtt-summoner/pull/50
 
 [Finnish]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fi/
 [French]: https://weblate.foundryvtt-hub.com/projects/arbron-summoner/main/fr/
