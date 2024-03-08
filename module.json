@@ -81,6 +81,11 @@
       "lang": "es",
       "name": "Español",
       "path": "lang/es.json"
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Portugueses (Brazil)",
+      "path": "lang/pt-BR.json"
     }
   ],
   "packs": [

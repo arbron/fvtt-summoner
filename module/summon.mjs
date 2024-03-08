@@ -68,7 +68,7 @@ export default async function summon(item, summonsData, usage) {
   
     /**
      * A hook event that fires before a specific token is summoned.
-     * @function arbron.preSummon
+     * @function arbron.preSummonToken
      * @memberof hookEvents
      * @param {Item5e} item          The item that is performing the summoning.
      * @param {object} templateData  Template that contains summoning location.
