@@ -1,5 +1,11 @@
 # Arbron’s Summoning
 
+> [!Caution]
+>
+> The functionality of this module has been implemented into the DnD5e system since `3.1.0`. This module will not work with that version of the system or later and will not be updated to do so, nor will it be updated for Foundry V12 due to compatible system versions not supporting V12.
+>
+> Unfortunately due to changes in where summoning data is stored (the system stores it on the summoning spell rather than on the actors), it isn't feasible to provide a migration script from the module to the system's implementation.
+
 Easy to use interface for configuring and summoning actors within DnD5e.
 
 ![Release Version](https://img.shields.io/github/v/release/arbron/fvtt-summoner)
